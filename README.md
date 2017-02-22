@@ -1,1 +1,1 @@
-# barysmaruhin-front-end-course
+# Марухин Борис, окончил ФТК БГУИР в 2013 году.
