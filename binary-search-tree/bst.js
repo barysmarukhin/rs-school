@@ -116,18 +116,22 @@ BinarySearchTree.prototype.verify = function () {
     let isVerify = true;
     recourseCall(rootValue);
     function recourseCall(node) {
-        if (node._left && node._left.key < node.key) {
-            recourseCall(node._left);
-        } else {
-            isVerify = false;
-            return false;
-        }
-        if (node._right && node._right.key > node.key) {
-            recourseCall(node._right);
-        } else {
-            isVerify = false;
-            return false;
-        }
+        if (node._left) {
+            if (node._left.key < node.key) {
+                recourseCall(node._left);
+            } else {
+                isVerify = false;
+                return false;
+            }
+        } 
+        if (node._right) {
+            if(node._right.key > node.key) {
+                recourseCall(node._right);
+            } else {
+                isVerify = false;
+                return false;
+            }
+        } 
     }
     return isVerify;
 }
