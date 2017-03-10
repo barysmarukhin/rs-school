@@ -142,5 +142,5 @@ BinarySearchTree.prototype.verify = function () {
 // You can comment this block for testing in the browser but final solution MUST contains this module.exports code
 module.exports = {
   BinarySearchTree,
-  student: 'YOUR GITHUB ACCOUNT'
+  student: 'https://github.com/barysmaruhin'
 };
