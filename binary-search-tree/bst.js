@@ -52,8 +52,21 @@ BinarySearchTree.prototype.search = function () {
 
 }
 
-BinarySearchTree.prototype.contains = function () {
-
+BinarySearchTree.prototype.contains = function (value) {
+    let current = this.root;
+    let foundItem = false;
+    while(!foundItem && current) {
+        if (current.key === value) {
+            foundItem = true;
+        } else {
+            if (value > current.value) {
+                current = current.right;
+            } else if (value < current.value) {
+                current = current.left;
+            } 
+        }
+    }
+    return foundItem;
 }
 
 BinarySearchTree.prototype.traverse = function () {
