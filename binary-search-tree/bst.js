@@ -24,23 +24,26 @@ BinarySearchTree.prototype.insert = function () {
         this._root = node;
     } else {
         current = this._root;
-        if (value < current.value) {
-            if(!current._left) {
-                current._left = node;
-                return this;
+        while(true) {
+            if (value < current.value) {
+                if(!current._left) {
+                    current._left = node;
+                    return false;
+                } else {
+                    current = current._left;
+                }
+            } else if (value > current.value) {
+                if(!current._right) {
+                    current._right = node;
+                    return false;
+                } else {
+                    current = current._right;
+                }
             } else {
-                current = current._left;
+                return false;
             }
-        } else if (value > current.value) {
-            if(!current._right) {
-                current._right = node;
-                return this;
-            } else {
-                current = current._right;
-            }
-        } else {
-            return this;
         }
+        return this;
     }
 }
 
