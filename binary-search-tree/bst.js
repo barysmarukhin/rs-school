@@ -85,12 +85,49 @@ BinarySearchTree.prototype.contains = function (value) {
     return foundItem;
 }
 
-BinarySearchTree.prototype.traverse = function () {
-
+BinarySearchTree.prototype.traverse = function (order) {
+    const result = [];
+    const rootValue = this.root;
+    recourseCall(rootValue);
+    function recourseCall(node) {
+        if (order) {
+            if (node._left) {
+                recourseCall(node._left);
+            }
+            result.push(node.value);
+            if (node._right) {
+                recourseCall(node._right);
+            } 
+        } else {
+            if (node._right) {
+                recourseCall(node._right);
+            }
+            result.push(node.value);
+            if(node._left) {
+                recourseCall(node._left);
+            }
+        }
+    }
+    return result;
 }
 
 BinarySearchTree.prototype.verify = function () {
+    let current = this._root;
+    let isVerify = true;
 
+    while(isVerify && current) {
+        if(current._right) {
+            current.key < current._right.key;
+            current = current._right;
+        }
+    }
+    while(isVerify && current) {
+        if(current._right) {
+            current.key < current._right.key;
+            current = current._right;
+        }
+    }
+    return isVerify;
 }
 
 // const bst = new BinarySearchTree();
