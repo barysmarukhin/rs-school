@@ -112,19 +112,21 @@ BinarySearchTree.prototype.traverse = function (order) {
 }
 
 BinarySearchTree.prototype.verify = function () {
-    let current = this._root;
+    const rootValue = this._root;
     let isVerify = true;
-
-    while(isVerify && current) {
-        if(current._right) {
-            current.key < current._right.key;
-            current = current._right;
+    recourseCall(rootValue);
+    function recourseCall(node) {
+        if (node._left && node._left.key < node.key) {
+            recourseCall(node._left);
+        } else {
+            isVerify = false;
+            return false;
         }
-    }
-    while(isVerify && current) {
-        if(current._right) {
-            current.key < current._right.key;
-            current = current._right;
+        if (node._right && node._right.key > node.key) {
+            recourseCall(node._right);
+        } else {
+            isVerify = false;
+            return false;
         }
     }
     return isVerify;
