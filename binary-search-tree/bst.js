@@ -54,7 +54,7 @@ BinarySearchTree.prototype.delete = function () {
 BinarySearchTree.prototype.search = function (key) {
     let current = this._root;
     let foundItem = false;
-    while(foundItem === false && current) {
+    while(!foundItem && current) {
         if (current.key === key) {
             foundItem = true;
         } else {
@@ -71,7 +71,7 @@ BinarySearchTree.prototype.search = function (key) {
 BinarySearchTree.prototype.contains = function (value) {
     let current = this._root;
     let foundItem = false;
-    while( foundItem === false && current) {
+    while(!foundItem && current) {
         if (current.value === value) {
             foundItem = true;
         } else {
