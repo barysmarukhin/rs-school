@@ -14,7 +14,7 @@ function BinarySearchTree() {
 BinarySearchTree.prototype.constructor = BinarySearchTree;
 
 BinarySearchTree.prototype.root = function () {
-    return this._root;
+    return this._root.value || null;
 }
 
 BinarySearchTree.prototype.insert = function () {
@@ -51,15 +51,28 @@ BinarySearchTree.prototype.delete = function () {
 
 }
 
-BinarySearchTree.prototype.search = function () {
-
+BinarySearchTree.prototype.search = function (key) {
+    let current = this._root;
+    let foundItem = false;
+    while(foundItem === false && current) {
+        if (current.key === key) {
+            foundItem = true;
+        } else {
+            if (key > current.key) {
+                current = current._right;
+            } else if (key < current.key) {
+                current = current._left;
+            } 
+        }
+    }
+    return foundItem ? current.value : null;
 }
 
 BinarySearchTree.prototype.contains = function (value) {
     let current = this._root;
     let foundItem = false;
-    while(!foundItem && current) {
-        if (current.key === value) {
+    while( foundItem === false && current) {
+        if (current.value === value) {
             foundItem = true;
         } else {
             if (value > current.value) {
