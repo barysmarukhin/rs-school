@@ -1,0 +1,108 @@
+/*----header block----*/
+.header {
+  background-color: $header-bg;
+  line-height:1;
+  .container {
+    background-color: $header-bg;
+    padding-bottom: 290px;
+  }
+  &__menu {
+    float:left;
+    &-icon {
+      display:inline-block;
+      padding: 15px 20px;
+      border-right: 1px solid #3c3c3c;
+      border-left: 1px solid #3c3c3c;
+      transition: all .5s ease-in;
+      &:hover {
+        background-color: $light;
+        &:before {
+          color:$header-bg;
+        }
+      }
+      &:before {
+        content: "\f0c9";
+        font-family: FontAwesome;
+        color:$light;
+        font-size: 23px;
+        font-weight: thin;
+      }
+    }//header__menu-icon
+  }//header__menu
+  &__logo {
+    margin-top:20px;
+    float:left;
+    margin-left: 660px;
+    transition: all .3s ease-in;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }//header__logo
+  &__socials {
+    float:right;
+  }//header__socials
+}//header
+
+.logo {
+  &__text {
+    color:$light;
+    text-transform: uppercase;
+    @include hind(semibold);
+    font-size: 22.15px;
+    line-height: 1.0;
+    letter-spacing: 5px;
+  }
+}
+
+.socials {
+  font-size: 0;
+  &__item {
+    @include inlineblock(middle);
+  }//socials__item
+  &__link {
+    display: inline-block;
+    padding: 20px;
+    border-right:1px solid #3c3c3c;
+    transition: all .5s ease-in;
+    &:hover {
+      background-color: $light;
+      &:before {
+        color:$header-bg;
+      }
+    }
+    &:first-child {
+      border-left:1px solid #3c3c3c;
+    }
+    &:before {
+      font-family: FontAwesome;
+      color:$light;
+      font-size: 16px;
+      font-weight: thin;
+    }
+    &.socials__link--rss {
+      &:before {
+        content: "\f09e";
+      }
+    }
+    &.socials__link--twitter {
+      &:before {
+        content: "\f099";
+      }
+    }
+    &.socials__link--tumblr {
+      &:before {
+        content: "\f173";
+      }
+    }
+    &.socials__link--facebook {
+      &:before {
+        content: "\f09a";
+      }
+    }
+    &.socials__link--search {
+      &:before {
+        content: "\f002";
+      }
+    }
+  }//socials__link
+}//socials
