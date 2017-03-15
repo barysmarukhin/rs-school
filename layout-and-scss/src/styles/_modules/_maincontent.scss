@@ -254,32 +254,30 @@
     border-left: 1px solid #d7d7d7;
     transition: all .3s ease-in;
     &:hover {
-      transform: scale(1.1);
-    }
-    &.content__details--top-bordered {
       border-right: none;
       border-left: none;
       color: #999999;
-      &:before {
+      position:relative;
+      &:before,&:after {
         content: '';
         background-color: #d7d7d7;
         height: 1px;
         width:30px;
-        position: relative;
+        position: absolute;
+      }
+      &:before {
         top:-7px;
-        display: block;
-        margin: 0 auto;
+        left: 50%;
+        margin-left: -15px;
       }
       &:after {
-        content: '';
-        background-color: #d7d7d7;
-        height: 1px;
-        width:30px;
-        position: relative;
         bottom:-7px;
-        display: block;
-        margin: 0 auto;
+        right: 50%;
+        margin-right:-15px;
       }
+    }
+    &.content__details--top-bordered {
+      
     }
   }
   &__social {
