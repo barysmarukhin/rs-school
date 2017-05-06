@@ -2,5 +2,13 @@ body {
   background-color: pink;
 }
 p {
-  color: blue;
+  color: black;
+}
+.youtube-item{
+  &__link {
+    cursor: pointer;
+  }
+  &__img {
+    display: block;
+  }
 }
