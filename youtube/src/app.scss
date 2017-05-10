@@ -1,14 +1,5 @@
-body {
-  background-color: pink;
-}
-p {
-  color: black;
-}
-.youtube-item{
-  &__link {
-    cursor: pointer;
-  }
-  &__img {
-    display: block;
-  }
-}
+@import './css-includes/layout';
+@import './css-includes/common';
+@import './css-includes/header';
+@import './css-includes/content';
+@import './css-includes/footer';

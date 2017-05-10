@@ -1,8 +1,8 @@
-export const getVideos = (searchValue, resultCount, apiCode) => {
+export const getVideos = (searchValue, itemsCount, apiCode) => {
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
     let request = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${searchValue}`;
-    request = `${request}&type=video&order=viewCount&maxResults=${resultCount}&key=${apiCode}`;
+    request = `${request}&type=video&order=viewCount&maxResults=${itemsCount}&key=${apiCode}`;
     xhr.open('GET', request, true);
     xhr.onload = function(){
       if (this.status === 200) {
