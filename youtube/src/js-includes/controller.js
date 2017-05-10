@@ -8,23 +8,23 @@ export default {
     .then((response) => {
       const items = response.items;
       results.innerHTML = view.render('video', items);
-      router.handle('pagination', items.length)
+      router.handle('pagination', items.length, ...args)
     });
   },
-  paginationRoute: (itemsCount) => {
+  paginationRoute: (itemsCount,...args) => {
     const pagination = {
       code: '',
       //utility
       extend: (data) => {
         data = data || {};
-        pagination.itemsCount = pagination.itemsCount || data.itemsCount;
+        pagination.itemsCount = data.itemsCount;
         pagination.pageWidth = pagination.getPageWidth();
         pagination.itemsPerPage = Math.round(pagination.pageWidth / 426,6667);
         pagination.size = Math.ceil(pagination.itemsCount / pagination.itemsPerPage) || 300;
         pagination.resultsWidth = pagination.size * pagination.pageWidth;
         pagination.setResultsWidth(pagination.resultsWidth);
-        pagination.page = pagination.page || data.page || 1;
-        pagination.step = data.step || 3;
+        pagination.page = data.page || 1;
+        pagination.step = data.step || 2;
       },
       add: (s, f) => {
         for (var i = s; i < f; i++) {
@@ -47,6 +47,20 @@ export default {
       setResultsWidth: (width) => {
         document.getElementById('results').style.width = width + 'px';
       },
+      getMoreItems: () => {
+        model.getVideos(...args)
+        .then((response) => {
+          const items = response.items;
+          results.innerHTML += view.render('video', items);
+          pagination.extend({
+            itemsCount: pagination.itemsCount + items.length,
+            page: pagination.page,
+            step: pagination.step
+          });
+          pagination.moveItems(pagination.page);
+          pagination.start();
+        });
+      },
       //handlers
       click: function() {
         pagination.page = +this.innerHTML;
@@ -55,8 +69,13 @@ export default {
       },
       onResize: () => {
         window.addEventListener('resize', () => {
-          pagination.extend();
+          pagination.extend({
+            itemsCount: pagination.itemsCount,
+            page: pagination.page,
+            step: pagination.step
+          });
           pagination.start();
+          //if after resize would be the less pages than it was
           if(pagination.page > pagination.size) {
             pagination.page = pagination.size
           }
@@ -74,10 +93,11 @@ export default {
       next: () => {
         pagination.page++;
         if (pagination.page > pagination.size) {
-            pagination.page = pagination.size;
+          pagination.getMoreItems();
+        } else {
+          pagination.moveItems(pagination.page);
+          pagination.start();
         }
-        pagination.moveItems(pagination.page);
-        pagination.start();
       },
       //script
       bind: () => {
@@ -132,9 +152,9 @@ export default {
       }
     }
     return pagination.init(document.getElementById('pagination'), {
-        itemsCount,
-        page:1,
-        step:2
-      })
+      itemsCount,
+      page:1,
+      step:2
+    })
   }
 }
