@@ -4,9 +4,11 @@
   flex-wrap:wrap;
   justify-content: left;
   transition: transform .5s ease-in;
+  cursor: move;
 }
 .youtube-item{
   width: 320px;
+  user-select: none;
   background-color: #f6f6f6;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#f6f6f6), to(#eae8e8));
   background-image: -webkit-linear-gradient(top, #f6f6f6, #eae8e8);

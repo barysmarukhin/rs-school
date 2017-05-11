@@ -1,9 +1,11 @@
 import * as model from './model';
 import * as view from './view';
 import router from './router';
+import _ from 'lodash';
 
 export default {
   videoSearhRoute: (...args) => {
+    const results = document.getElementById('results');
     return model.getVideos(...args)
     .then((response) => {
       const items = response.items;
@@ -12,6 +14,8 @@ export default {
     });
   },
   paginationRoute: (itemsCount,...args) => {
+    const results = document.getElementById('results');
+    let dataTooltip;
     const pagination = {
       code: '',
       //utility
@@ -24,22 +28,28 @@ export default {
         pagination.resultsWidth = pagination.size * pagination.pageWidth;
         pagination.setResultsWidth(pagination.resultsWidth);
         pagination.page = data.page || 1;
+        pagination.moveItems(pagination.page);
         pagination.step = data.step || 2;
       },
       add: (s, f) => {
-        for (var i = s; i < f; i++) {
-            pagination.code += '<a class="pagination__item">' + i + '</a>';
-        }
+        pagination.code += view.render('paginationAdd', {
+          'firstItem': s,
+          'lastItem': f
+        });
       },
       last: () => {
-        pagination.code += '<i>...</i><a class="pagination__item">' + pagination.size + '</a>';
+        pagination.code += view.render('paginationLast', {
+          'lastItem': pagination.size
+        });
       },
       first: () => {
-        pagination.code += '<a class="pagination__item">1</a><i>...</i>';
+        pagination.code += view.render('paginationFirst', {
+          'firstItem': 1
+        });
       },
       moveItems: (page) => {
-        const translate = (pagination.pageWidth * (page-1)).toString();
-        document.getElementById('results').style.transform = `translateX(-${translate}px)`;
+        const translateValue = (pagination.pageWidth * (page-1)).toString();
+        document.getElementById('results').style.transform = `translateX(-${translateValue}px)`;
       },
       getPageWidth: () => {
         return document.getElementsByClassName('container')[0].offsetWidth;
@@ -57,7 +67,6 @@ export default {
             page: pagination.page,
             step: pagination.step
           });
-          pagination.moveItems(pagination.page);
           pagination.start();
         });
       },
@@ -66,6 +75,14 @@ export default {
         pagination.page = +this.innerHTML;
         pagination.moveItems(pagination.page);
         pagination.start();
+      },
+      mousedown: function() {
+        this.className += ' mousedowned';
+      },
+      mousemove: function() {
+        if(this.classList.contains('mousedowned')){
+          this.classList.remove('mousedowned');
+        }
       },
       onResize: () => {
         window.addEventListener('resize', () => {
@@ -81,6 +98,61 @@ export default {
           }
           pagination.moveItems(pagination.page);
         }, false)
+      },
+      onSwipe: () => {
+        let xDown = null;
+        let xUp = null;
+        pagination.onTouchSwipe(xDown, xUp);
+        pagination.onMouseSwipe(xDown, xUp);
+      },
+      onTouchSwipe: (xDown, xUp) => {
+        results.addEventListener('touchstart', (e) => {
+          xDown = e.touches[0].clientX;
+        });
+        results.addEventListener('touchmove', (e) => {
+          if (!xDown) {
+            return;
+          }
+          xUp = e.touches[0].clientX;
+        });
+        results.addEventListener('touchend', () => {
+          if (!xDown || !xUp) {
+            return;
+          }
+          const xDiff = xDown - xUp;
+          if (xDiff > 0) {
+            pagination.next();
+          } else {
+            pagination.prev();
+          }
+        });
+      },
+      onMouseSwipe: (xDown, xUp) => {
+        results.addEventListener('mousedown', (e) => {
+          xDown = e.clientX;
+        });
+        results.addEventListener('mousemove', (e) => {
+          if (!xDown) {
+            return;
+          }
+          xUp = e.clientX;
+        });
+        results.addEventListener('mouseup', () => {
+          if (!xDown || !xUp) {
+            return;
+          }
+          const xDiff = xDown - xUp;
+          if (xDiff > 0) {
+            pagination.next();
+          } else {
+            pagination.prev();
+          }
+        });
+      },
+      stopImageDrag: () => {
+        _.forEach(document.getElementsByClassName('youtube-item__img'), (image) => {
+          image.ondragstart = () => false;
+        });
       },
       prev: () => {
         pagination.page--;
@@ -107,6 +179,8 @@ export default {
             a[i].className += ' current';
           }
           a[i].addEventListener('click', pagination.click, false);
+          a[i].addEventListener('mousedown', pagination.mousedown, false);
+          a[i].addEventListener('mousemove', pagination.mousemove, false);
         }
       },
       finish: () => {
@@ -115,6 +189,7 @@ export default {
         pagination.bind();
       },
       start: () => {
+        pagination.stopImageDrag();
         if (pagination.size < pagination.step * 2 + 6) {
             pagination.add(1, pagination.size + 1);
         }
@@ -144,6 +219,7 @@ export default {
         pagination.e = document.getElementsByClassName('pagination__items')[0];
         pagination.buttons(e);
         pagination.onResize();
+        pagination.onSwipe();
       },
       init: (e, data) => {
         pagination.extend(data);

@@ -29,7 +29,8 @@
     margin: 0 auto;
     overflow: hidden;
     padding: 8px;
-    width: 450px;
+    max-width: 450px;
+    width: 90%;
   }
 
   .form-wrapper .search {
@@ -45,7 +46,8 @@
     font: 16px Lucida Sans, Trebuchet MS, Tahoma, sans-serif;
     height: 42px;
     padding: 10px;
-    width: 320px;
+    max-width: 320px;
+    width: 75%;
   }
 
   .form-wrapper .search:focus {
@@ -86,7 +88,7 @@
     padding: 0;
     text-transform: uppercase;
     text-shadow: 0 1px 0 rgba(0, 0 ,0, .3);
-    width: 100px;
+    width: 20%;
   }
 
   .form-wrapper .submit:hover,
@@ -108,5 +110,10 @@
   }
   .form-wrapper .submit::-moz-focus-inner {
     border: 0;
+  }
+}
+@media screen and (max-width:600px) {
+  .header__title {
+    font-size: 32px;
   }
 }

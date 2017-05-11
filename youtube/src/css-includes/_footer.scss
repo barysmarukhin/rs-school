@@ -13,6 +13,53 @@
     background-image:     -ms-linear-gradient(top, #DBDBDB, #E2E2E2);
     background-image:      -o-linear-gradient(top, #DBDBDB, #E2E2E2);
     background-image:         linear-gradient(top, #DBDBDB, #E2E2E2);
+    &__item{
+      position: relative;
+      &.mousedowned {
+          transition: .3s;
+          border-color: lighten(#1BA39C, 70%);
+          background: lighten(#1BA39C, 70%);
+
+          &:before {
+            top: -48px;
+            opacity: 1;
+          }
+
+          &:after {
+            top: -18px;
+            opacity: 1;
+          }
+      }
+      &:before {
+        position: absolute;
+        top: -40px;
+        left: -36px;
+        background: lighten(#1BA39C, 80%);
+        width: 80px;
+        font-family: "Roboto";
+        font-size: 14px;
+        padding: 8px 0;
+        border-radius: 3px;
+        content: attr(data-tooltip);
+        opacity: 0;
+        transition: .3s;
+      }
+
+      &:after {
+        position: absolute;
+        width: 0;
+        height: 0;
+        top: -10px;
+        left: -2px;
+        border-top: 6px solid lighten(#1BA39C, 80%);
+        border-right: 6px solid transparent;
+        border-bottom: 6px solid transparent;
+        border-left: 6px solid transparent;
+        content: "";
+        opacity: 0;
+        transition: .3s;
+      }
+    }
 }
 .pagination a, .pagination i {
     display: inline-block;

@@ -36,6 +36,14 @@ const templates = {
     '<a class="pagination__nav">&#9668;</a>' +
     '<span class="pagination__items"></span>'+
     '<a class="pagination__nav">&#9658;</a>',
+  paginationAddTemplate:
+    '<% for (let i = items.firstItem; i < items.lastItem; i++) { %>' +
+      '<a class="pagination__item" data-tooltip="page <%=i%>"><%=i%></a>' +
+    '<% } %>',
+  paginationLastTemplate:
+    '<i>...</i><a class="pagination__item" data-tooltip="page <%=items.lastItem%>"><%=items.lastItem%></a>',
+  paginationFirstTemplate:
+    '<a class="pagination__item" data-tooltip="page <%=items.firstItem%>"><%=items.firstItem%></a><i>...</i>',
 }
 export const render = (templateName, model) => {
   templateName = `${templateName}Template`;
