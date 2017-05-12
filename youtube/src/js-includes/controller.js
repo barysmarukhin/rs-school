@@ -102,28 +102,36 @@ export default {
       onSwipe: () => {
         let xDown = null;
         let xUp = null;
-        pagination.onTouchSwipe(xDown, xUp);
+        let yDown = null;
+        let yUp = null;
+        pagination.onTouchSwipe(xDown, xUp, yDown, yUp);
         pagination.onMouseSwipe(xDown, xUp);
       },
-      onTouchSwipe: (xDown, xUp) => {
+      onTouchSwipe: (xDown, xUp, yDown, yUp) => {
         results.addEventListener('touchstart', (e) => {
           xDown = e.touches[0].clientX;
+          yDown = e.touches[0].clientY;
         });
         results.addEventListener('touchmove', (e) => {
-          if (!xDown) {
+          if (!xDown || !yDown) {
             return;
           }
           xUp = e.touches[0].clientX;
+          yUp = e.touches[0].clientY;
         });
         results.addEventListener('touchend', () => {
-          if (!xDown || !xUp) {
+          if (!xDown || !xUp || !yDown || !yUp) {
             return;
           }
           const xDiff = xDown - xUp;
+          const yDiff = yDown - yUp;
+          if( Math.abs(xDiff) < Math.abs(yDiff)) {
+            return //if swipe will occur at vertical axis mostly
+          }
           if (xDiff > 0) {
-            pagination.next();
+            pagination.next();//left swipe
           } else {
-            pagination.prev();
+            pagination.prev();//right swipe
           }
         });
       },
