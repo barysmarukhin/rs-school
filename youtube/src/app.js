@@ -9,6 +9,8 @@ const initialData = {
   itemsCount: 12,
   apiCode: 'AIzaSyALXrws-rL-ikZzepdzE1Y4sWfHxnCH1Vg'
 }
+
+/* вот этот листенер было бы здорово во view перенести, а initialData передать через параметр функции view.render() */
 submitForm.addEventListener('submit', (e) => {
   e.preventDefault();
   router.handle('videoSearh',searchField.value, initialData.itemsCount, initialData.apiCode);

@@ -158,6 +158,7 @@ export default {
         });
       },
       stopImageDrag: () => {
+        /* тут лучше было навесить один обработчик на общий родительский элемент и использовать всплытие событий */
         _.forEach(document.getElementsByClassName('youtube-item__img'), (image) => {
           image.ondragstart = () => false;
         });

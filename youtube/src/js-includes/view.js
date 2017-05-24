@@ -17,6 +17,16 @@ const templates = {
     '<footer class="footer">'+
       '<div id="pagination" class="pagination"></div>'+
     '</footer>',
+    /* раз уж пишешь на es6, то почему бы не заюзать темплейтовые строки, например
+
+    `<div class="wrapper">
+      <div class="container">
+        <div id="results" class="results" style="transform: translateX(0px)"></div>
+      </div>
+    </div>`
+
+    это бы избавило тебя от такого количества плюсов, да и операция конкатенации не самая резвая
+     */
   videoTemplate:
     '<%' +
     '_.each(items,function(item,key,list){' +
