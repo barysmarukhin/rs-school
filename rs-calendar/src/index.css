@@ -1,0 +1,188 @@
+.App {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.title {
+  text-align: center;
+  font-size: 26px;
+}
+input {
+  margin: 5px;
+}
+.reminder-form {
+  padding: 5px;
+}
+.list-item {
+  display: inline-block;
+}
+.delete-button {
+  float:right;
+  padding-left: 5px;
+}
+
+/*Common calendar styles*/
+.vertical-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  background: #EFEFEF;
+}
+.custom-row {
+  display: flex;
+}
+.header {
+  padding:0 10px;
+}
+.header__title {
+  text-align: center;
+}
+.header__menu {
+  display: flex;
+  justify-content: space-between;
+}
+.header__list {
+  padding-left: 0;
+  text-align:left;
+}
+.header__link {
+  margin: 0 5px 5px;
+}
+.header__link.today {
+  height: 34px;
+}
+.calendar {
+  display: block;
+  background: #FFFFFF;
+  width: 90%;
+  border: solid 1px #CCCCCC;
+  margin: 50px auto;
+  box-shadow: 0 0 15px 0 #C0C0C0;
+  font-size: 1.3rem;
+  text-align: center;
+}
+.calendar .calendar__nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #FFFFFF;
+  cursor: default;
+  font-size: 1.4rem;
+  display: block;
+  font-weight: bold;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+/*Month view styles*/
+.calendar .calendar__nav .month-display {
+  align-items: center;
+  height: 40px;
+  background: #2875C7;
+}
+.calendar .calendar__nav .month-label {
+  flex: 1;
+}
+.calendar .calendar__nav .arrow {
+  text-align: center;
+  flex-basis: 15%;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background .2s;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.calendar .calendar__nav .arrow:hover {
+  background: #1f5c9d;
+}
+.calendar .week {
+  border-top: solid 1px #CCCCCC;
+}
+.calendar .week:first-child {
+  border-top: none;
+}
+.calendar .day-names {
+  color: #2875C7;
+  font-weight: bold;
+  cursor: default;
+  font-size: 1.2rem;
+}
+.calendar .day-names .day {
+  cursor: default;
+}
+.calendar .day-names .day:hover {
+  background: inherit;
+}
+.calendar .day {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1 1 0%;
+  height: 60px;
+  border-left: solid 1px #CCCCCC;
+  cursor: pointer;
+  transition: all .2s;
+}
+.calendar .day:hover {
+  background: #EFEFEF;
+}
+/*.calendar .day:first-child {
+  border-left: none;
+}*/
+.calendar .day.today {
+  background: #dceaf8;
+}
+.calendar .day.different-month {
+  color: #C0C0C0;
+}
+.calendar .day.selected {
+  background: #2875C7;
+  color: #FFFFFF;
+}
+
+/*WeekView styles*/
+.week-view {
+  max-height: 700px;
+  overflow-y: auto;
+}
+.week-view__day-names{
+  margin-left: 77px;
+}
+.week-view__content {
+  display: flex;
+}
+.timeline {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border-left: solid 1px #CCCCCC;
+}
+.timeline:first-child {
+  border-left: none;
+}
+.timeline.time-gutter {
+  width:77px;
+}
+.timeline.day-slot {
+  flex: 1 1 0%;
+}
+.day-slot.today {
+  background: #dceaf8;
+}
+.timeline__item {
+  border-top: solid 1px #CCCCCC;
+  min-height: 40px;
+  display: flex;
+  justify-content: center;
+}
+.time-gutter .timeline__item {
+  align-items: center;
+}
