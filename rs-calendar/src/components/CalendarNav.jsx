@@ -16,13 +16,15 @@ class CalendarNav extends Component {
     } = this.props
     switch (viewType) {
       case 'month':
-        return <span className="month-label">{dateFromState.format('MMMM YYYY')}</span>;
+        return <span className="date-label">{dateFromState.clone().format('MMMM YYYY')}</span>;
       case 'week':
-        const startOfWeek = dateFromState.startOf('week').format('MMMM DD');
-        const endOfWeek = dateFromState.endOf('week').format('MMMM DD');
-        return <span className="month-label">{startOfWeek} - {endOfWeek}</span>;
+        const startOfWeek = dateFromState.clone().startOf('week').format('DD MMMM YYYY');
+        const endOfWeek = dateFromState.clone().endOf('week').format('DD MMMM YYYY');
+        return <span className="date-label">{startOfWeek} - {endOfWeek}</span>;
+      case 'day':
+        return <span className="date-label">{dateFromState.clone().format('ddd DD MMMM YYYY')}</span>
       default:
-        return <span className="month-label">Unknown date format</span>;
+        return <span className="date-label">Unknown date format</span>;
     }
   }
   render() {

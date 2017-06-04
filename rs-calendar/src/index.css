@@ -86,7 +86,7 @@ body {
   height: 40px;
   background: #2875C7;
 }
-.calendar .calendar__nav .month-label {
+.calendar .calendar__nav .date-label {
   flex: 1;
 }
 .calendar .calendar__nav .arrow {
@@ -149,14 +149,14 @@ body {
 }
 
 /*WeekView styles*/
-.week-view {
+.week-view, .day-view {
   max-height: 700px;
   overflow-y: auto;
 }
 .week-view__day-names{
   margin-left: 77px;
 }
-.week-view__content {
+.week-view__content, .day-view__content {
   display: flex;
 }
 .timeline {

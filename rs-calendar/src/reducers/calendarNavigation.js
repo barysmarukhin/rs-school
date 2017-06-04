@@ -7,6 +7,8 @@ const moveNext = (state) => {
       return { ...state, date: state.date.clone().add(1, 'month')}
     case 'week':
       return { ...state, date: state.date.clone().add(1, 'week')}
+    case 'day':
+      return { ...state, date: state.date.clone().add(1, 'day')}
     default:
       return state;
   }
@@ -18,6 +20,8 @@ const movePrev = (state) => {
       return { ...state, date: state.date.clone().subtract(1, 'month')}
     case 'week':
       return { ...state, date: state.date.clone().subtract(1, 'week')}
+    case 'day':
+      return { ...state, date: state.date.clone().subtract(1, 'day')}
     default:
       return state;
   }

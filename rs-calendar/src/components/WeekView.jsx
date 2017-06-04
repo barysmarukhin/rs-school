@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { changeView, changeDate } from '../actions';
+import { changeView } from '../actions';
 import TimeLine from './TimeLine';
 import DayNames from './DayNames.jsx';
 // import DayLine from './DayLine';
@@ -9,7 +9,7 @@ class WeekView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      week: props.dateFromState,
+      week: props.dateFromState.clone()
     };
   }
   componentWillMount() {
@@ -17,7 +17,7 @@ class WeekView extends Component {
   }
   componentWillReceiveProps(nextProps) {
     this.setState({
-      week: nextProps.dateFromState,
+      week: nextProps.dateFromState.clone()
     });
   }
   getWeekDays() {
@@ -52,7 +52,7 @@ class WeekView extends Component {
 }
 function mapStateToProps(state) {
   return {
-    dateFromState: state.calendarNavigation.date
+    dateFromState: state.calendarNavigation.date.clone()
   }
 }
-export default connect (mapStateToProps, { changeView, changeDate }) (WeekView);
+export default connect (mapStateToProps, { changeView }) (WeekView);

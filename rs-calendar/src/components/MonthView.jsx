@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import MonthViewWeek from './MonthViewWeek';
 import DayNames from './DayNames';
 import { connect } from 'react-redux';
-import { changeView, changeDate } from '../actions';
+import { changeView } from '../actions';
 
 class MonthView extends Component {
   constructor(props) {
@@ -57,4 +57,4 @@ function mapStateToProps(state) {
     dateFromState: state.calendarNavigation.date
   }
 }
-export default connect (mapStateToProps, { changeView, changeDate }) (MonthView);
+export default connect (mapStateToProps, { changeView }) (MonthView);
