@@ -179,10 +179,116 @@ body {
 }
 .timeline__item {
   border-top: solid 1px #CCCCCC;
-  min-height: 40px;
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  padding:10px 0;
+}
+.timeline__item-minutes {
+  font-weight: bold;
+  color: #2875C7;
+  width: 100%;
+  height: 18px;
 }
 .time-gutter .timeline__item {
   align-items: center;
+}
+
+/*AgendaView styles*/
+.agenda-view{
+  overflow: auto;
+}
+.agenda-view__table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #DDD;
+}
+.agenda-view__header {
+  padding: 3px 5px;
+  text-align: center;
+  border: 1px solid #DDD;
+  width: 25%;
+}
+.agenda-view__item {
+  padding: 5px 10px;
+  vertical-align: top;
+  white-space: nowrap;
+  width: 25%;
+  border: 1px solid #DDD;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.agenda-view__item.agenda-view__item--link {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.agenda-view__item.agenda-view__item--link:hover {
+  text-decoration: none;
+}
+/*EventType colors*/
+.webinar {
+  background-color: #5cb85c;
+}
+.lecture {
+  background-color: #f9f9f9;
+}
+.workshop {
+  background-color: #5bc0de;
+}
+.deadline {
+  background-color: #d9534f;
+}
+.event {
+  background-color: #428bca;
+}
+/*Modal styles*/
+.modal-title {
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.event-type {
+  text-align: center;
+  padding: 5px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.event-info {
+  display: flex;
+  justify-content: space-between;
+  text-transform: uppercase;
+  flex-wrap: wrap;
+}
+.event-time {
+  display: flex;
+  justify-content: space-between;
+  text-transform: uppercase;
+  margin: 10px 0;
+  text-align: center;
+}
+.event-time, .event-speakers {
+  min-width: 200px;
+}
+.event-time span {
+  min-width: 70px;
+}
+.event-time span:first-child {
+  text-align: left;
+}
+.event-detail {
+  display: flex;
+  justify-content: flex-start;
+}
+.event-detail span {
+  min-width: 70px;
+}
+.speaker-wrapper {
+  margin-bottom: 5px;
+}
+.speaker-wrapper img {
+  margin-right: 10px;
+}
+.resource-title {
+  text-align: center;
 }

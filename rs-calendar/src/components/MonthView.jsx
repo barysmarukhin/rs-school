@@ -45,10 +45,10 @@ class MonthView extends Component {
 
   render() {
     return (
-      <div className="month-view">
+      <section className="month-view">
         <DayNames />
         {this.renderWeeks()}
-      </div>
+      </section>
     );
   }
 }

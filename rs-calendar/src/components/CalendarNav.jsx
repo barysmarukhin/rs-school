@@ -23,6 +23,10 @@ class CalendarNav extends Component {
         return <span className="date-label">{startOfWeek} - {endOfWeek}</span>;
       case 'day':
         return <span className="date-label">{dateFromState.clone().format('ddd DD MMMM YYYY')}</span>
+      case 'agenda':
+        const dayCurrentMonth = dateFromState.clone().format('DD MMMM YYYY');
+        const dayNextMonth = dateFromState.clone().add(1,'month').format('DD MMMM YYYY');
+        return <span className="date-label">{dayCurrentMonth} - {dayNextMonth}</span>;
       default:
         return <span className="date-label">Unknown date format</span>;
     }

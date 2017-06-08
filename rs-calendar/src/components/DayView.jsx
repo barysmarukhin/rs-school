@@ -20,20 +20,20 @@ class DayView extends React.Component {
   }
   render() {
     return (
-      <div className="day-view">
+      <section className="day-view">
         <div className="day-view__content">
           <TimeLine
             className="time-gutter"
             isShown={true}
-            date={this.props.date || this.props.dateFromState}
+            date={this.state.day}
           />
           <TimeLine
             className="day-slot"
-            date={this.props.date || this.props.dateFromState}
+            date={this.state.day}
             isShown={false}
           />
         </div>
-      </div>
+      </section>
     );
   }
 }

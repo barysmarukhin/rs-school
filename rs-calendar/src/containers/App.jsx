@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import Header from '../components/Header';
 import CalendarNav from '../components/CalendarNav';
+import { connect } from 'react-redux';
+import { getEvents } from '../actions';
 
 class App extends Component {
+  componentDidMount() {
+    this.props.onGetEvents();
+  }
   render() {
     return (
       <section className="calendar">
@@ -14,4 +19,8 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect (null, dispatch => ({
+  onGetEvents:() => {
+    dispatch(getEvents());
+  }
+})) (App);

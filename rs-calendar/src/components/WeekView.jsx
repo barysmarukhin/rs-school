@@ -28,7 +28,7 @@ class WeekView extends Component {
         <TimeLine
           key={i}
           date = {date}
-          isToday = {date.isSame(new Date(), "day")}
+          isToday = {date.isSame(new Date(), 'day')}
           className="day-slot"
           isShown={false}
         />
@@ -40,13 +40,13 @@ class WeekView extends Component {
   }
   render() {
     return (
-      <div className="week-view">
+      <section className="week-view">
         <DayNames className="week-view__day-names" weekStartDate={this.state.week.clone().startOf('week')}/>
         <div className="week-view__content">
           <TimeLine className="time-gutter" isShown={true} date={this.state.week.clone().startOf('day')} />
           {this.getWeekDays()}
         </div>
-      </div>
+      </section>
     );
   }
 }
