@@ -4,6 +4,7 @@ import moment from 'moment';
 import cn from 'classnames';
 import { getSpeakers } from '../actions';
 import { connect } from 'react-redux';
+import FeedBack from './FeedBack';
 
 class PopUp extends Component {
   constructor(props) {
@@ -36,7 +37,6 @@ class PopUp extends Component {
       speakers,
       resources,
       location,
-      id,
       description
     } = this.props;
     const beginDate = moment(start).utc().format('DD MMM YYYY');
@@ -44,11 +44,6 @@ class PopUp extends Component {
     const endDate = moment(start).utc().clone().add(duration, 'ms').format('DD MMM YYYY');
     const endTime = moment(start).utc().clone().add(duration, 'ms').format('HH:mm:ss');
     const speakersFromState = this.state.speakersFromState;
-    // if(speakersFromState) {
-    //   const filteredSpeakers = speakersFromState.filter((speakerFromState) => {
-    //     return speakers.indexOf(speakerFromState.id) !== -1
-    //   })
-    // }
     return(
       <Modal show={this.state.isModalOpen} size='modal-lg' onHide={()=>this.hideModal()}>
         <ModalHeader>
@@ -80,7 +75,7 @@ class PopUp extends Component {
                         return speakers.indexOf(speakerFromState.id) !== -1
                       }).map((filteredSpeaker, index) => {
                         return (
-                          <div className="speaker-wrapper">
+                          <div key={index} className="speaker-wrapper">
                             <img className="speaker-avatar img-circle" width="30px" height="30px" src={filteredSpeaker.avatar} alt="avatar"/>
                             <span key={index}>{filteredSpeaker.name}</span>
                           </div>
@@ -106,7 +101,7 @@ class PopUp extends Component {
           <div className="resources-wrapper">
             {resources.map((resource, index) => {
               return (
-                <div className="resource-wrapper">
+                <div key={index} className="resource-wrapper">
                   <h5 className="resource-title"><strong>{resource.type}</strong></h5>
                   <a href={resource.resource} className="resource-link">
                     View Details
@@ -116,6 +111,9 @@ class PopUp extends Component {
               )
             })}
           </div>
+          <hr/>
+          <h6>Add You Feedback Here</h6>
+          <FeedBack/>
         </ModalBody>
         <ModalFooter>Modal Footer Is Here</ModalFooter>
       </Modal>

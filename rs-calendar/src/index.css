@@ -292,3 +292,28 @@ body {
 .resource-title {
   text-align: center;
 }
+
+/*FeedBack styling*/
+.add-comment {
+  margin-bottom: 30px;
+}
+.comment {
+  background-color: #ffbb33;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  padding:10px;
+}
+.comment p {
+  word-wrap: break-word;
+}
+.comment textarea, .add-comment textarea {
+  margin-bottom: 10px;
+}
+.comment button {
+  margin: 0 10px 0 0;
+  opacity: 0;
+  transition: opacity .3s ease-in
+}
+.comment:hover button {
+  opacity: 1;
+}
