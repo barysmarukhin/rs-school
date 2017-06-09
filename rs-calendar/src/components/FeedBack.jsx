@@ -88,7 +88,7 @@ class FeedBack extends Component {
   }
   updateComment(newText, i) {
     const arr = this.state.comments;
-    arr[i] = newText;
+    arr[i] = newText || 'Comment Field Still Empty';
     this.setState({comments:arr});
   }
   handleChange(e) {

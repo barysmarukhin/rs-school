@@ -289,16 +289,23 @@ body {
 .speaker-wrapper img {
   margin-right: 10px;
 }
+.google-map{
+  display: flex;
+  justify-content: center;
+}
 .resource-title {
   text-align: center;
 }
 
 /*FeedBack styling*/
+.feedback-field {
+  text-transform: uppercase;
+}
 .add-comment {
   margin-bottom: 30px;
 }
 .comment {
-  background-color: #ffbb33;
+  background-color: #f0f4c3 ;
   border-radius: 5px;
   margin-bottom: 20px;
   padding:10px;

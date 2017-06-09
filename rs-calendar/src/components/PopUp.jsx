@@ -1,17 +1,18 @@
 import React, {Component} from 'react';
-import { Modal, ModalHeader, ModalTitle, ModalBody, ModalFooter} from 'react-bootstrap';
+import { Modal, ModalHeader, ModalTitle, ModalBody } from 'react-bootstrap';
 import moment from 'moment';
 import cn from 'classnames';
 import { getSpeakers } from '../actions';
 import { connect } from 'react-redux';
 import FeedBack from './FeedBack';
+import GMap from './GoogleMap';
 
 class PopUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isModalOpen: false,
-      speakersFromState: null
+      speakersFromState: null,
     };
   }
   hideModal(){
@@ -91,6 +92,8 @@ class PopUp extends Component {
             <span>{location}</span>
           </div>
           <hr/>
+          <GMap address = 'улица Фабрициуса 4, Минск' />
+          <hr/>
           <div className="event-detail">
             <span><strong>Info</strong></span>
             <span>{description}</span>
@@ -112,10 +115,9 @@ class PopUp extends Component {
             })}
           </div>
           <hr/>
-          <h6>Add You Feedback Here</h6>
+          <h5 className="feedback-title">Add You Feedback Here:</h5>
           <FeedBack/>
         </ModalBody>
-        <ModalFooter>Modal Footer Is Here</ModalFooter>
       </Modal>
     )
   }
