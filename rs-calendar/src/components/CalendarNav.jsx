@@ -34,7 +34,7 @@ class CalendarNav extends Component {
   render() {
     return (
       <div className="calendar__nav">
-        <div className="month-display custom-row">
+        <div className="display custom-row">
           <i className="arrow fa fa-angle-left" onClick={()=>this.previous()}/>
           {this.renderDateLabel()}
           <i className="arrow fa fa-angle-right" onClick={()=>this.next()}/>

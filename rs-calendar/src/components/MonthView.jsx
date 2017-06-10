@@ -1,4 +1,3 @@
-//based on https://www.codementor.io/reactjs/tutorial/building-a-calendar-using-react-js--less-css-and-font-awesome
 import React, { Component } from 'react';
 import MonthViewWeek from './MonthViewWeek';
 import DayNames from './DayNames';
@@ -33,7 +32,8 @@ class MonthView extends Component {
       weeks.push(
         <MonthViewWeek key={count}
           date={date.clone()}
-          month={month} />
+          month={month}
+        />
       );
 
       date.add(1, "w");//смещаемся на неделю вперед
@@ -54,7 +54,7 @@ class MonthView extends Component {
 }
 function mapStateToProps(state) {
   return {
-    dateFromState: state.calendarNavigation.date
+    dateFromState: state.calendarNavigation.date,
   }
 }
 export default connect (mapStateToProps, { changeView }) (MonthView);

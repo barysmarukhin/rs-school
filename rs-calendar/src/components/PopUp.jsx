@@ -40,10 +40,10 @@ class PopUp extends Component {
       location,
       description
     } = this.props;
-    const beginDate = moment(start).utc().format('DD MMM YYYY');
-    const beginTime = moment(start).utc().format('HH:mm:ss');
-    const endDate = moment(start).utc().clone().add(duration, 'ms').format('DD MMM YYYY');
-    const endTime = moment(start).utc().clone().add(duration, 'ms').format('HH:mm:ss');
+    const beginDate = moment(start).format('DD MMM YYYY');
+    const beginTime = moment(start).format('HH:mm:ss');
+    const endDate = moment(start).clone().add(duration, 'ms').format('DD MMM YYYY');
+    const endTime = moment(start).clone().add(duration, 'ms').format('HH:mm:ss');
     const speakersFromState = this.state.speakersFromState;
     return(
       <Modal show={this.state.isModalOpen} size='modal-lg' onHide={()=>this.hideModal()}>

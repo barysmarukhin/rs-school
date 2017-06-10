@@ -33,8 +33,12 @@ class AgendaView extends Component {
     this.setState({
       dayCurrentMonth: nextProps.dateFromState.clone(),
       dayNextMonth: nextProps.dateFromState.clone().add(1,'month'),
-      events: nextProps.eventsFromState,
     });
+    if(!this.state.events.length) {
+      this.setState({
+        events: nextProps.eventsFromState,
+      });
+    }
   }
   hideModaComponent() {
     this.setState({
@@ -44,6 +48,8 @@ class AgendaView extends Component {
   getEvents(events) {
     return events.filter((event, index) => {
       return moment(event.start).isAfter(this.state.dayCurrentMonth) && moment(event.start).isBefore(this.state.dayNextMonth)
+    }).sort((left, right)=>{
+      return moment(left.start).diff(moment(right.start))
     }).map((event, index) => {
       const newCurrentEvent = Object.assign({}, this.state.currentEvent);
       newCurrentEvent.type = event.type;
@@ -59,8 +65,8 @@ class AgendaView extends Component {
         <table key={index} className="agenda-view__table agenda-view__table--content">
           <tbody>
             <tr>
-              <td className="agenda-view__item">{moment(event.start).utc().format('DD-MM-YYYY')}</td>
-              <td className="agenda-view__item">{moment(event.start).utc().format('HH:mm:ss')}</td>
+              <td className="agenda-view__item">{moment(event.start).format('DD-MM-YYYY')}</td>
+              <td className="agenda-view__item">{moment(event.start).format('HH:mm:ss')}</td>
               <td className={cn("agenda-view__item",{ [`${event.type}`]: true })}>{event.type}</td>
               <td className="agenda-view__item agenda-view__item--link"
                  onClick={()=>this.setState({

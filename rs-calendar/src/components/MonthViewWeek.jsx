@@ -12,11 +12,11 @@ export default class MonthViewWeek extends React.Component {
     } = this.props;
     for (let i = 0; i < 7; i++) {
       let day = {
-          name: date.format("dd").substring(0, 2),
+          name: date.format('dd').substring(0, 2),
           number: date.date(),
           isCurrentMonth: date.month() === month.month(),
-          isToday: date.isSame(new Date(), "day"),
-          date: date
+          isToday: date.isSame(new Date(), 'day'),
+          date: date,
       };
       days.push(
         <MonthViewDay day={day} key={i}/>
