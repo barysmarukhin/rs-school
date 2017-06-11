@@ -15,6 +15,7 @@
     "redux-devtools-extension": "^2.13.2",
     "redux-thunk": "^2.2.0"
   },
+  "homepage": "http://rs-calendar-epam.herokuapp.com/",
   "devDependencies": {
     "classnames": "^2.2.5",
     "lodash": "^4.17.4",
