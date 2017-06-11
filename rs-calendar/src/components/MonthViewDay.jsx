@@ -84,7 +84,13 @@ class MonthViewDay extends React.Component {
         className = {cn("day",{"today": isToday},{"different-month":!isCurrentMonth})}
       >
         <div className="day__number">{number}</div>
-        {this.getEvents(events, date)}
+        {
+          this.props.isEventsFetching
+          ?
+            <i className="fa fa-spinner fa-spin"></i>
+          :
+            this.getEvents(events, date)
+        }
         {this.state.showModalComponent ?
           <PopUp
             hideModaComponent = {()=> this.hideModaComponent()}

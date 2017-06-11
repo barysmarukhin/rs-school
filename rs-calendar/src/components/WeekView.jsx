@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { changeView } from '../actions';
 import TimeLine from './TimeLine';
 import DayNames from './DayNames.jsx';
-// import DayLine from './DayLine';
 
 class WeekView extends Component {
   constructor(props) {
@@ -39,6 +38,9 @@ class WeekView extends Component {
     return days;
   }
   render() {
+    if(this.props.isEventsFetching) {
+      return(<i className="fa fa-spinner fa-spin"></i>)
+    }
     return (
       <section className="week-view">
         <DayNames className="week-view__day-names" weekStartDate={this.state.week.clone().startOf('week')}/>
@@ -52,7 +54,8 @@ class WeekView extends Component {
 }
 function mapStateToProps(state) {
   return {
-    dateFromState: state.calendarNavigation.date.clone()
+    dateFromState: state.calendarNavigation.date.clone(),
+    isEventsFetching: state.ajaxDataHandler.isEventsFetching
   }
 }
 export default connect (mapStateToProps, { changeView }) (WeekView);

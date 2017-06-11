@@ -82,7 +82,7 @@ class TimeLine extends React.Component {
             <article
               style={{top:`${top}px`, cursor:'pointer'}}
               className={cn("timeline__item-event",{[`${dayEvents[j].type}`]:true})}
-              key="event"
+              key={Math.random()}
               onClick={()=>this.setState({
                 showModalComponent: true,
                 currentEvent: newCurrentEvent
@@ -160,7 +160,6 @@ function mapStateToProps(state) {
   return {
     dateFromState: state.calendarNavigation.date,
     eventsFromState: state.ajaxDataHandler.events,
-    isEventsFetching: state.ajaxDataHandler.isEventsFetching
   }
 }
 export default connect (mapStateToProps,null) (TimeLine);
