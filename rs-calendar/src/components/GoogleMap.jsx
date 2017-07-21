@@ -15,13 +15,14 @@ export default class GMap extends Component {
   }
   componentDidMount() {
     const that = this;
-    const {address} = this.props;
+    const { address } = this.props;
     googleMapsApi.load(function(google) {
       const geocoder = new google.maps.Geocoder();
       const map = new google.maps.Map(
         that.refs.map,
         {
-          zoom: that.state.zoom
+          zoom: that.state.zoom,
+          scrollwheel: false
         }
       );
       if (geocoder) {

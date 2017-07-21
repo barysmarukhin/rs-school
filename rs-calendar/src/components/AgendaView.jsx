@@ -67,14 +67,21 @@ class AgendaView extends Component {
             <tr>
               <td className="agenda-view__item">{moment(event.start).format('DD-MM-YYYY')}</td>
               <td className="agenda-view__item">{moment(event.start).format('HH:mm:ss')}</td>
-              <td className={cn("agenda-view__item",{ [`${event.type}`]: true })}>{event.type}</td>
               <td className="agenda-view__item agenda-view__item--link"
-                 onClick={()=>this.setState({
-                   showModalComponent: true,
-                   currentEvent: newCurrentEvent
-                 })}
-              >
-                {event.title}
+                onClick={()=>this.setState({
+                  showModalComponent: true,
+                  currentEvent: newCurrentEvent
+                })}
+                >
+                <em>{event.title}</em>
+              </td>
+              <td
+                className={cn("agenda-view__item", "agenda-view__item--link", { [`${event.type}`]: true })}
+                  onClick={()=>this.setState({
+                    showModalComponent: true,
+                    currentEvent: newCurrentEvent
+                  })}
+                >{event.type}
               </td>
             </tr>
           </tbody>
@@ -95,8 +102,8 @@ class AgendaView extends Component {
               <tr>
                 <th className="agenda-view__header">Date</th>
                 <th className="agenda-view__header">Time</th>
-                <th className="agenda-view__header">Type</th>
                 <th className="agenda-view__header">Title</th>
+                <th className="agenda-view__header">Type</th>
               </tr>
             </thead>
           </table>

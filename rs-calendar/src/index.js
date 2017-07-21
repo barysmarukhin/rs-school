@@ -13,6 +13,7 @@ import WeekView from './components/WeekView';
 import DayView from './components/DayView';
 import AgendaView from './components/AgendaView';
 import reducer from './reducers';
+
 import './index.css';
 
 const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));
