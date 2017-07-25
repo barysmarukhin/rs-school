@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const path = require('path');
+const eventController = require('../controllers/eventController');
 
 // Do work here
 router.get('/', (req, res) => {
@@ -8,8 +9,7 @@ router.get('/', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../..', 'build', 'index.html'));
 });
 
-router.get('/about', (req, res) => {
-  res.render('events');
-})
-
+router.get('/administrator', eventController.getEvents)
+router.get('/administrator/add', eventController.addEvent)
+router.post('/administrator/add', eventController.createEvent)
 module.exports = router;

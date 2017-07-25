@@ -11,11 +11,15 @@ html
         nav.nav
           .nav__section.nav__section--pages
             li.nav__item
-              a.nav__link.nav__link--logo(href="/")
-                img(src="./images/icons/logo.svg")
+              a.nav__link.nav__link--logo(href="/administrator")
+                img(src="../images/icons/logo.svg")
+            li.nav__item
+              a.nav__link(href='/')
+                != h.icon('calendar')
+                span Calendar
             each item in h.menu
               li.nav__item
-                a.nav__link(href=item.slug, class=(currentPath.startsWith(item.slug) ? 'nav__link--active' : ''))
+                a.nav__link(href=`/administrator/${item.slug}`, class=(currentPath.startsWith(item.slug) ? 'nav__link--active' : ''))
                   != h.icon(item.icon)
                   span #{item.title}
           .nav__section.nav__section--search
@@ -24,9 +28,6 @@ html
               .search__results
           .nav__section.nav__section--user
             if user
-              li.nav__item: a.nav__link(href="/hearts", class=(currentPath.startsWith('/hearts') ? 'nav__link--active' : ''))
-                != h.icon('heart')
-                span.heart-count #{user.hearts && user.hearts.length}
               li.nav__item: a.nav__link(href="/logout", class=(currentPath.startsWith('/logout') ? 'nav__link--active' : ''))
                 != h.icon('logout')
                 span Logout

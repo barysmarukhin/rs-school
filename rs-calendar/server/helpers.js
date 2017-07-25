@@ -21,8 +21,8 @@ exports.icon = (name, extension = 'svg') => fs.readFileSync(`./public/images/ico
 exports.siteName = `RS-Calendar!`;
 
 exports.menu = [
-  { slug: '/events', title: 'Events', icon: 'event', },
-  { slug: '/tags', title: 'Tags', icon: 'tag', },
-  { slug: '/add', title: 'Add', icon: 'add', },
-  { slug: '/map', title: 'Map', icon: 'map', },
+  { slug: 'events', title: 'Events', icon: 'event', },
+  { slug: 'tags', title: 'Tags', icon: 'tag', },
+  { slug: 'add', title: 'Add', icon: 'add', },
+  { slug: 'map', title: 'Map', icon: 'map', },
 ];

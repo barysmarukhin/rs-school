@@ -1,0 +1,13 @@
+mixin eventForm(event = {})
+  form(action="/administrator/add" method="POST" class="card")
+    label(for="name") name
+    input(name="name" type="text")
+    label(for="description") Description
+    textarea(name="description")
+    - const choices = ['Event', 'Webinar', 'Workshop', 'Deadline', 'Lecture']
+    ul.tags
+      each choice in choices
+        .tag.tag__choice
+          input(type="checkbox" id=choice value=choice name="tags")
+          label(for=choice) #{choice}
+    input(type="submit" value="Save" class="button")
