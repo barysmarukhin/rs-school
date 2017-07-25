@@ -10,8 +10,11 @@ router.get('/', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../..', 'build', 'index.html'));
 });
 
-router.get('/administrator', catchErrors(eventController.getEvents))
-router.get('/administrator/events', catchErrors(eventController.getEvents))
-router.get('/administrator/add', eventController.addEvent)
-router.post('/administrator/add', eventController.createEvent)
+router.get('/administrator', catchErrors(eventController.getEvents));
+router.get('/administrator/events', catchErrors(eventController.getEvents));
+router.get('/administrator/add', eventController.addEvent);
+router.post('/administrator/add', catchErrors(eventController.createEvent));
+router.post('/administrator/add/:id', catchErrors(eventController.updateEvent));
+router.get('/administrator/events/:id/edit', catchErrors(eventController.editEvent));
+
 module.exports = router;

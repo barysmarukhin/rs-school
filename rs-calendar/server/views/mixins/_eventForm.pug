@@ -1,13 +1,14 @@
 mixin eventForm(event = {})
-  form(action="/administrator/add" method="POST" class="card")
+  form(action=`/administrator/add/${event._id || ''}` method="POST" class="card")
     label(for="name") name
-    input(name="name" type="text")
+    input(name="name" type="text" value=event.name)
     label(for="description") Description
-    textarea(name="description")
+    textarea(name="description")= event.description
     - const choices = ['Event', 'Webinar', 'Workshop', 'Deadline', 'Lecture']
+    - const tags = event.tags || []
     ul.tags
       each choice in choices
         .tag.tag__choice
-          input(type="checkbox" id=choice value=choice name="tags")
+          input(type="checkbox" id=choice value=choice name="tags" checked=(tags.includes(choice)))
           label(for=choice) #{choice}
     input(type="submit" value="Save" class="button")
