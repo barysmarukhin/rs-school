@@ -712,7 +712,7 @@ label {
     background: #303030;
     color: white; }
 
-.stores {
+.events {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
@@ -720,26 +720,26 @@ label {
   -ms-flex-pack: justify;
       justify-content: space-between; }
 
-.store {
+.event {
   background: white;
   margin: 10px 0;
   width: 30%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.05); }
-  .store--wide {
+  .event--wide {
     width: 100%; }
-  .store__details {
+  .event__details {
     padding: 2rem; }
-    .store__details p {
+    .event__details p {
       line-height: 1.2;
       margin-bottom: 0; }
   @media all and (max-width: 850px) {
-    .store {
+    .event {
       width: 48%; } }
   @media all and (max-width: 550px) {
-    .store {
+    .event {
       width: 100%; } }
 
-.store__actions {
+.event__actions {
   position: relative;
   z-index: 2;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -755,19 +755,19 @@ label {
   -ms-flex-pack: distribute;
       justify-content: space-around; }
 
-.store__action {
+.event__action {
   font-size: 10px; }
-  .store__action svg {
+  .event__action svg {
     width: 25px;
     fill: white; }
-  .store__action--edit a {
+  .event__action--edit a {
     border-bottom: 0; }
 
-.store__hero {
+.event__hero {
   position: relative;
   padding: 0 10px 0 10px;
   text-align: right; }
-  .store__hero:before {
+  .event__hero:before {
     display: block;
     content: '';
     position: absolute;
@@ -780,7 +780,7 @@ label {
     z-index: 1;
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
             clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%); }
-  .store__hero img {
+  .event__hero img {
     height: 100%;
     width: 100%;
     top: 0;
@@ -789,7 +789,8 @@ label {
     left: 0;
     object-fit: cover;
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
-            clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%); }
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+    opacity: .4; }
 
 .tags {
   margin: 0;

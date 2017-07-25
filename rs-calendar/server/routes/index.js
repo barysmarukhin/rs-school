@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const path = require('path');
 const eventController = require('../controllers/eventController');
+const { catchErrors } = require('../handlers/errorHandlers');
 
 // Do work here
 router.get('/', (req, res) => {
@@ -9,7 +10,8 @@ router.get('/', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../..', 'build', 'index.html'));
 });
 
-router.get('/administrator', eventController.getEvents)
+router.get('/administrator', catchErrors(eventController.getEvents))
+router.get('/administrator/events', catchErrors(eventController.getEvents))
 router.get('/administrator/add', eventController.addEvent)
 router.post('/administrator/add', eventController.createEvent)
 module.exports = router;

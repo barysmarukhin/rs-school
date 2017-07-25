@@ -1,0 +1,10 @@
+extends layout
+include mixins/_eventCard
+
+block content
+  .inner
+    h2= title
+    .events
+      each event in events
+        +eventCard(event)
+    

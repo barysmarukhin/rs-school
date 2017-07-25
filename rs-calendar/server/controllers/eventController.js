@@ -1,12 +1,17 @@
-exports.getEvents = (req, res, next) => {
-  console.log(req.name)
-  res.render('administrator');
+const mongoose = require('mongoose');
+const Event = mongoose.model('Event');
+
+exports.getEvents = async (req, res) => {
+  const events = await Event.find();
+  res.render('events', { title: 'List of events', events });
 }
 
 exports.addEvent = (req, res, next) => {
   res.render('editEvent', { title: 'Add Event' });
 }
 
-exports.createEvent = (req, res, next) => {
-  res.json(req.body);
+exports.createEvent = async (req, res, next) => {
+  const event = await (new Event(req.body)).save();
+  req.flash('success', `Your event ${event.name} successfully added`)
+  res.redirect(`/administrator/event/${event.slug}`);
 }
