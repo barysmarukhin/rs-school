@@ -19,7 +19,6 @@ exports.createEvent = async (req, res) => {
 exports.editEvent = async (req, res) => {
   //1. Find the event given the ID
   const event = await Event.findOne({_id: req.params.id});
-  console.log(event);
   //2. Confirm they are the owner of the event
   //TODO
   //3. Render out the edit form so the user can update their event
