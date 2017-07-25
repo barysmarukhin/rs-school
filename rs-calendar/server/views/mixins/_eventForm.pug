@@ -7,7 +7,7 @@ mixin eventForm(event = {})
     label(for="address") Address
     input(type="text" id="address" name="location[address]" value=(event.location && event.location.address))
     label(for="lng") Address Lng
-    input(type="text" id="lnd" name="location[coordinates][0]" value=(event.location && event.location.coordinates[0]) required)
+    input(type="text" id="lng" name="location[coordinates][0]" value=(event.location && event.location.coordinates[0]) required)
     label(for="lat") Address Lat
     input(type="text" id="lat" name="location[coordinates][1]" value=(event.location && event.location.coordinates[1]) required)
     - const choices = ['Event', 'Webinar', 'Workshop', 'Deadline', 'Lecture']

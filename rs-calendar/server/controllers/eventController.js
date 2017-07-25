@@ -30,7 +30,7 @@ exports.updateEvent = async (req, res) => {
   const event = await Event.findOneAndUpdate({_id: req.params.id}, req.body, {
     new: true, //return the new store instead of the old one
     runValidators: true
-  }).exec();// run the query
+  }).exec();// run the query(first param of findOneAndUpdate)
   req.flash('success', `Successfully updated <strong>${event.name}</strong>. <a href="/administrator/events/${event._id}">View Event</a>`);
   // redirect them the event and tell them it worked
   res.redirect(`/administrator/events/${event._id}/edit`);
