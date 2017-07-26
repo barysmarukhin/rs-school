@@ -1,9 +1,14 @@
 mixin eventForm(event = {})
-  form(action=`/administrator/add/${event._id || ''}` method="POST" class="card")
+  form(action=`/administrator/add/${event._id || ''}` method="POST" class="card" enctype="multipart/form-data")
     label(for="name") name
     input(name="name" type="text" value=event.name)
     label(for="description") Description
     textarea(name="description")= event.description
+    //- Image upload
+    label(for="photo") Event Photo
+      input(type="file" name="photo" id="photo" accept="image/gif, image/png, image/jpeg")
+      if(event.photo)
+        img(src=`/uploads/${event.photo}`, alt=event.name width=200)
     label(for="address") Address
     input(type="text" id="address" name="location[address]" value=(event.location && event.location.address))
     label(for="lng") Address Lng

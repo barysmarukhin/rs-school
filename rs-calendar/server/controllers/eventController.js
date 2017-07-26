@@ -1,5 +1,20 @@
 const mongoose = require('mongoose');
 const Event = mongoose.model('Event');
+const multer = require('multer');//to store photos in the memory of the server
+const jimp = require('jimp');// to resize
+const uuid = require('uuid');//to give a random unique name
+
+const multerOptions = {
+  storage: multer.memoryStorage(),
+  fileFilter(req, file, next) {
+    const isPhoto = file.mimetype.startsWith('image/');
+    if(isPhoto) {
+      next(null, true);
+    } else {
+      next({ message: 'That filetype isn\'t allowed!' }, false);
+    }
+  }
+};
 
 exports.getEvents = async (req, res) => {
   const events = await Event.find();
@@ -8,6 +23,21 @@ exports.getEvents = async (req, res) => {
 
 exports.addEvent = (req, res) => {
   res.render('editEvent', { title: 'Add Event' });
+}
+
+exports.upload = multer(multerOptions).single('photo');
+
+exports.resize = async (req, res, next) => {
+  if(!req.file) {
+    next();
+    return;
+  }
+  const extension = req.file.mimetype.split('/')[1];
+  req.body.photo = `${uuid.v4()}.${extension}`;
+  const photo = await jimp.read(req.file.buffer);
+  await photo.resize(800, jimp.AUTO);
+  await photo.write(`./public/uploads/${req.body.photo}`);
+  next();
 }
 
 exports.createEvent = async (req, res) => {
@@ -26,6 +56,8 @@ exports.editEvent = async (req, res) => {
 }
 
 exports.updateEvent = async (req, res) => {
+  //set the location data to be a point
+  req.body.location.type = 'Point';
   // find and update the event
   const event = await Event.findOneAndUpdate({_id: req.params.id}, req.body, {
     new: true, //return the new store instead of the old one

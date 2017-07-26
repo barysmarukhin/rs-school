@@ -8,5 +8,5 @@ mixin eventCard(event = {})
       img(src=`/uploads/${event.photo || 'event.png'}`)
       h2.title
         a(href=`/administrator/${event.slug}`) #{event.name}
-      .event__details
-        p= event.description.split(' ').slice(0, 25).join(' ')
+    .event__details
+      p= event.description.split(' ').slice(0, 25).join(' ')

@@ -31,7 +31,8 @@ const eventSchema = new mongoose.Schema({
       type: String,
       required: 'You must supply address!'
     }
-  }
+  },
+  photo: String
 });
 
 eventSchema.pre('save', function(next) {

@@ -13,8 +13,16 @@ router.get('/', (req, res) => {
 router.get('/administrator', catchErrors(eventController.getEvents));
 router.get('/administrator/events', catchErrors(eventController.getEvents));
 router.get('/administrator/add', eventController.addEvent);
-router.post('/administrator/add', catchErrors(eventController.createEvent));
-router.post('/administrator/add/:id', catchErrors(eventController.updateEvent));
-router.get('/administrator/events/:id/edit', catchErrors(eventController.editEvent));
+router.post('/administrator/add',
+  eventController.upload,
+  catchErrors(eventController.resize),
+  catchErrors(eventController.createEvent)
+);
+router.post('/administrator/add/:id',
+  eventController.upload,
+  catchErrors(eventController.resize),
+  catchErrors(eventController.updateEvent)
+);
+router.get('/administrator/events/:id/edit',catchErrors(eventController.editEvent));
 
 module.exports = router;
