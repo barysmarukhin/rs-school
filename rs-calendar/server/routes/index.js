@@ -26,4 +26,7 @@ router.post('/administrator/add/:id',
 router.get('/administrator/events/:id/edit',catchErrors(eventController.editEvent));
 router.get('/administrator/event/:slug', catchErrors(eventController.getEventBySlug));
 
+router.get('/administrator/tags', catchErrors(eventController.getEventsByTag));
+router.get('/administrator/tags/:tag', catchErrors(eventController.getEventsByTag));
+
 module.exports = router;

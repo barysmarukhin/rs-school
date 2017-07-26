@@ -73,3 +73,9 @@ exports.getEventBySlug = async (req, res, next) => {
   if(!event) return next();
   res.render('event', { title: event.name, event })
 }
+
+exports.getEventsByTag = async(req, res) => {
+  const tags = await Event.getTagsList();
+  const tag = req.params.tag;
+  res.render('tag', { tags, title: 'Tags', tag })
+}
