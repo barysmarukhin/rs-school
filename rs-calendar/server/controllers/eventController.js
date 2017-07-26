@@ -63,7 +63,13 @@ exports.updateEvent = async (req, res) => {
     new: true, //return the new store instead of the old one
     runValidators: true
   }).exec();// run the query(first param of findOneAndUpdate)
-  req.flash('success', `Successfully updated <strong>${event.name}</strong>. <a href="/administrator/events/${event._id}">View Event</a>`);
+  req.flash('success', `Successfully updated <strong>${event.name}</strong>. <a href="/administrator/event/${event.slug}">View Event</a>`);
   // redirect them the event and tell them it worked
   res.redirect(`/administrator/events/${event._id}/edit`);
+}
+
+exports.getEventBySlug = async (req, res, next) => {
+  const event = await Event.findOne({ slug: req.params.slug });
+  if(!event) return next();
+  res.render('event', { title: event.name, event })
 }
