@@ -75,7 +75,10 @@ exports.getEventBySlug = async (req, res, next) => {
 }
 
 exports.getEventsByTag = async(req, res) => {
-  const tags = await Event.getTagsList();
   const tag = req.params.tag;
-  res.render('tag', { tags, title: 'Tags', tag })
+  const tagQuery = tag || { $exists: true }
+  const tagsPromise =  Event.getTagsList();
+  const eventsPromise =  Event.find({tags: tagQuery});
+  const [tags, events] = await Promise.all([tagsPromise, eventsPromise]);
+  res.render('tag', { tags, title: 'Tags', tag, events })
 }
