@@ -35,12 +35,19 @@ const eventSchema = new mongoose.Schema({
   photo: String
 });
 
-eventSchema.pre('save', function(next) {
+eventSchema.pre('save', async function(next) {
   if(!this.isModified('name')){
     next();
     return;
   }
   this.slug = slug(this.name);
+
+  //handle the same named slugs
+  const slugRegEx = new RegExp(`^(${this.slug})((-[0-9]*$)?)$`, 'i');
+  const eventsWithSlug = await this.constructor.find({ slug: slugRegEx });
+  if(eventsWithSlug.length) {
+    this.slug = `${this.slug}-${eventsWithSlug.length}`;
+  }
   next();
 })
 
