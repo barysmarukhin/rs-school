@@ -38,3 +38,21 @@ exports.register = async(req, res, next) => {
   await register(user, req.body.password);//register 'user' with 'req.body.password' is a mongodb method which used to hash and save password
   next();// pass to authController.login
 }
+
+exports.account = (req, res) => {
+  res.render('account', { title: 'Edit Your Account' });
+}
+
+exports.updateAccount = async (req, res) => {
+  const updates = {
+    name: req.body.name,
+    email: req.body.email
+  }
+  const user = await User.findOneAndUpdate(
+    { _id: req.user._id },
+    { $set: updates },
+    { runValidators: true, context: 'query', new: true }
+  )
+  req.flash('success', 'The profile updated!')
+  res.redirect('back');
+}

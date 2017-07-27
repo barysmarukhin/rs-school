@@ -36,13 +36,13 @@ router.post('/administrator/login', authController.login);
 router.get('/administrator/logout', authController.logout);
 router.get('/administrator/register', userController.registerForm);
 
-//1. Validate
-//2. Register
-//3. Log in
 router.post('/administrator/register',
   userController.validateRegister,
   userController.register,
   authController.login
 );
+
+router.get('/administrator/account', authController.isLoggedIn, userController.account)
+router.post('/administrator/account', catchErrors(userController.updateAccount))
 
 module.exports = router;
