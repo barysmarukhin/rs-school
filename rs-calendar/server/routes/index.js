@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 
 router.get('/administrator', catchErrors(eventController.getEvents));
 router.get('/administrator/events', catchErrors(eventController.getEvents));
-router.get('/administrator/add', eventController.addEvent);
+router.get('/administrator/add', authController.isLoggedIn, eventController.addEvent);
 router.post('/administrator/add',
   eventController.upload,
   catchErrors(eventController.resize),
@@ -33,11 +33,12 @@ router.get('/administrator/tags/:tag', catchErrors(eventController.getEventsByTa
 
 router.get('/administrator/login', userController.loginForm);
 router.post('/administrator/login', authController.login);
+router.get('/administrator/logout', authController.logout);
 router.get('/administrator/register', userController.registerForm);
 
 //1. Validate
-//1. Register
-//1. Log in
+//2. Register
+//3. Log in
 router.post('/administrator/register',
   userController.validateRegister,
   userController.register,

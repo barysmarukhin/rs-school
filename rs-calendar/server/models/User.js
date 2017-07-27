@@ -20,6 +20,11 @@ const userSchema = new mongoose.Schema({
     trim: true
   }
 });
+//virtual field is something that can be generated
+userSchema.virtual('gravatar').get(function() {
+  const hash = md5(this.email);
+  return `https://gravatar.com/avatar/${hash}?s=200`;
+});
 
 userSchema.plugin(passportLocalMongoose, {usernameField: 'email'});// use email field as login field
 userSchema.plugin(mongodbErrorHandler);// to create nicer than default error messages from mongodb

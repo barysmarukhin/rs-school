@@ -797,7 +797,6 @@ label {
   list-style: none;
   display: -ms-flexbox;
   display: flex;
-  margin-bottom: 2rem;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap; }
 
@@ -1109,7 +1108,8 @@ label {
   background: #FFC40E;
   color: #303030;
   font-family: 'Panama';
-  font-weight: 600; }
+  font-weight: 600;
+  margin-top: 10px; }
 
 .avatar {
   min-width: 50px;
