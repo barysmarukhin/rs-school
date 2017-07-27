@@ -2,11 +2,13 @@ const express = require('express');
 const router = express.Router();
 const path = require('path');
 const eventController = require('../controllers/eventController');
+const userController = require('../controllers/userController');
+const authController = require('../controllers/authController');
 const { catchErrors } = require('../handlers/errorHandlers');
 
 // Do work here
 router.get('/', (req, res) => {
-  // Always return the main index.html, so react-router render the route in the client
+  // Always return the main index.html, so react-router render the route on the client
   res.sendFile(path.resolve(__dirname, '../..', 'build', 'index.html'));
 });
 
@@ -28,5 +30,18 @@ router.get('/administrator/event/:slug', catchErrors(eventController.getEventByS
 
 router.get('/administrator/tags', catchErrors(eventController.getEventsByTag));
 router.get('/administrator/tags/:tag', catchErrors(eventController.getEventsByTag));
+
+router.get('/administrator/login', userController.loginForm);
+router.post('/administrator/login', authController.login);
+router.get('/administrator/register', userController.registerForm);
+
+//1. Validate
+//1. Register
+//1. Log in
+router.post('/administrator/register',
+  userController.validateRegister,
+  userController.register,
+  authController.login
+);
 
 module.exports = router;
