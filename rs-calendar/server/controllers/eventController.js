@@ -41,16 +41,23 @@ exports.resize = async (req, res, next) => {
 }
 
 exports.createEvent = async (req, res) => {
+  req.body.author = req.user._id;
   const event = await (new Event(req.body)).save();
   req.flash('success', `Your event <strong>${event.name}</strong> successfully added`)
   res.redirect(`/administrator/event/${event.slug}`);
 }
 
+const confirmOwner = (event, user) => {
+  if(!event.author.equals(user._id)) {
+    throw Error('You must own a store in order to edit it!');
+  }
+};
+
 exports.editEvent = async (req, res) => {
   //1. Find the event given the ID
   const event = await Event.findOne({_id: req.params.id});
   //2. Confirm they are the owner of the event
-  //TODO
+  confirmOwner(event, req.user)
   //3. Render out the edit form so the user can update their event
   res.render('editEvent', { title:`Edit "${event.name}"`, event });
 }

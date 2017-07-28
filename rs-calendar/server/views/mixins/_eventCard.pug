@@ -2,9 +2,10 @@ mixin eventCard(event = {})
   .event
     .event__hero
       .event__actions
-        .event__action.event__action--edit
-          a(href=`/administrator/events/${event._id}/edit`)
-            != h.icon('pencil')
+        if user && event.author.equals(user._id)
+          .event__action.event__action--edit
+            a(href=`/administrator/events/${event._id}/edit`)
+              != h.icon('pencil')
       img(src=`/uploads/${event.photo || 'event.png'}`)
       h2.title
         a(href=`/administrator/event/${event.slug}`) #{event.name}
