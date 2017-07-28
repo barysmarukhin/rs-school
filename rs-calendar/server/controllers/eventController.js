@@ -89,3 +89,18 @@ exports.getEventsByTag = async(req, res) => {
   const [tags, events] = await Promise.all([tagsPromise, eventsPromise]);
   res.render('tag', { tags, title: 'Tags', tag, events })
 }
+
+exports.searchEvents = async (req, res) => {
+  const events = await Event.find({
+    $text: {
+      $search: req.query.q
+    }
+  }, {
+    score: { $meta: 'textScore' }//now we project a new field named score
+  })
+  .sort({
+    score: { $meta: 'textScore' }
+  })
+  .limit(5);
+  res.json(events);
+}

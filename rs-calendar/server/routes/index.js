@@ -50,4 +50,10 @@ router.post('/administrator/account/reset/:token',
   authController.confirmedPasswords,
   catchErrors(authController.update)
 )
+
+/*
+  API
+*/
+
+router.get('/administrator/api/search', catchErrors(eventController.searchEvents));
 module.exports = router;

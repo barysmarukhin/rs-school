@@ -40,6 +40,11 @@ const eventSchema = new mongoose.Schema({
   }
 });
 
+eventSchema.index({
+  name: 'text',
+  description: 'text'
+})
+
 eventSchema.pre('save', async function(next) {
   if(!this.isModified('name')){
     next();
