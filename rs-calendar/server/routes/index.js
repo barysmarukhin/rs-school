@@ -42,7 +42,12 @@ router.post('/administrator/register',
   authController.login
 );
 
-router.get('/administrator/account', authController.isLoggedIn, userController.account)
-router.post('/administrator/account', catchErrors(userController.updateAccount))
-
+router.get('/administrator/account', authController.isLoggedIn, userController.account);
+router.post('/administrator/account', catchErrors(userController.updateAccount));
+router.post('/administrator/account/forgot', catchErrors(authController.forgot));
+router.get('/administrator/account/reset/:token', catchErrors(authController.reset));
+router.post('/administrator/account/reset/:token',
+  authController.confirmedPasswords,
+  catchErrors(authController.update)
+)
 module.exports = router;

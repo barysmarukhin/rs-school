@@ -18,7 +18,9 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: 'Please supply a name',
     trim: true
-  }
+  },
+  resetPasswordToken: String,
+  resetPasswordExpires: Date
 });
 //virtual field is something that can be generated
 userSchema.virtual('gravatar').get(function() {
