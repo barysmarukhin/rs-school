@@ -3,10 +3,11 @@ const crypto = require('crypto');
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
 const promisify = require('es6-promisify');
+const mail = require('../handlers/mail');
 
 // now we use local strategy in passport
 exports.login = passport.authenticate('local', {
-  failureRedirect: 'administrator/login',
+  failureRedirect: '/administrator/login',
   failureFlash: 'Failed Login!',
   successRedirect: '/administrator',
   successFlash: 'You are now logged in!'
@@ -40,7 +41,13 @@ exports.forgot = async(req, res) => {
   await user.save();
   // 3. Send them an email with the token
   const resetURL = `http://${req.headers.host}/administrator/account/reset/${user.resetPasswordToken}`;
-  req.flash('success', `You have been emailed a password reset link. ${resetURL}`);
+  await mail.send({
+    user,
+    subject: 'Password reset',
+    filename: 'password-reset',
+    resetURL
+  })
+  req.flash('success', `You have been emailed a password reset link.`);
   // 4. Redirect to login page
   res.redirect('/administrator/login');
 }
