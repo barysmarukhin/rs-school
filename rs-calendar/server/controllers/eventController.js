@@ -96,8 +96,9 @@ exports.searchEvents = async (req, res) => {
       $search: req.query.q
     }
   }, {
-    score: { $meta: 'textScore' }//now we project a new field named score
+    score: { $meta: 'textScore' }//now we project(create) a new field named score
   })
+  //sort by score
   .sort({
     score: { $meta: 'textScore' }
   })
