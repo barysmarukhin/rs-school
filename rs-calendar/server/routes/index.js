@@ -56,4 +56,5 @@ router.post('/administrator/account/reset/:token',
 */
 
 router.get('/administrator/api/search', catchErrors(eventController.searchEvents));
+router.get('/administrator/api/events/near', catchErrors(eventController.mapEvents));
 module.exports = router;

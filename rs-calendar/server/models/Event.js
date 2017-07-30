@@ -45,6 +45,10 @@ eventSchema.index({
   description: 'text'
 })
 
+eventSchema.index({
+  location: '2dsphere' //geospatial data
+});
+
 eventSchema.pre('save', async function(next) {
   if(!this.isModified('name')){
     next();

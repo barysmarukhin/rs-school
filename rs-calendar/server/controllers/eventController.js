@@ -105,3 +105,20 @@ exports.searchEvents = async (req, res) => {
   .limit(5);
   res.json(events);
 }
+
+exports.mapEvents = async (req, res) => {
+  const coordinates = [req.query.lng, req.query.lat].map(parseFloat);
+  const q = {
+    location: {
+      $near: {
+        $geometry: {
+          type: 'Point',
+          coordinates
+        },
+        $maxDistance: 100000 // 10km
+      }
+    }
+  };
+  const events = await Event.find(q).select('slug name description location').limit(10);
+  res.json(events);
+};
