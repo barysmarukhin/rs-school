@@ -1,5 +1,6 @@
 extends layout
 include mixins/_eventCard
+include mixins/_pagination
 
 block content
   .inner
@@ -7,4 +8,4 @@ block content
     .events
       each event in events
         +eventCard(event)
-    
+    +pagination(page, pages, count)    

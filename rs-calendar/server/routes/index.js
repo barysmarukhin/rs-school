@@ -14,6 +14,7 @@ router.get('/', (req, res) => {
 
 router.get('/administrator', catchErrors(eventController.getEvents));
 router.get('/administrator/events', catchErrors(eventController.getEvents));
+router.get('/administrator/events/page/:page', catchErrors(eventController.getEvents));
 router.get('/administrator/add', authController.isLoggedIn, eventController.addEvent);
 router.post('/administrator/add',
   eventController.upload,

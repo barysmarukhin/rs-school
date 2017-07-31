@@ -17,8 +17,25 @@ const multerOptions = {
 };
 
 exports.getEvents = async (req, res) => {
-  const events = await Event.find();
-  res.render('events', { title: 'List of events', events });
+  const page = req.params.page || 1;
+  const limit = 4;
+  const skip = (page * limit) - limit;
+  const eventsPromise =  Event
+    .find()
+    .skip(skip)
+    .limit(limit);
+
+  const countPromise = Event.count();
+
+  const [events, count] = await Promise.all([eventsPromise, countPromise]);
+  const pages = Math.ceil(count / limit);
+  if(!events.length && skip) {
+    req.flash('info', `You asked for page ${page}. But that doesn't exist. So I put you on page ${pages}`);
+    res.redirect(`/administrator/events/page/${pages}`)
+    return;
+  }
+
+  res.render('events', { title: 'List of events', events, page, pages, count });
 }
 
 exports.addEvent = (req, res) => {
