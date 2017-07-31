@@ -23,7 +23,8 @@ exports.getEvents = async (req, res) => {
   const eventsPromise =  Event
     .find()
     .skip(skip)
-    .limit(limit);
+    .limit(limit)
+    .sort({ created: 'desc' });
 
   const countPromise = Event.count();
 
