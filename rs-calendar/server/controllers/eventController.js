@@ -122,3 +122,7 @@ exports.mapEvents = async (req, res) => {
   const events = await Event.find(q).select('slug name description location').limit(10);
   res.json(events);
 };
+
+exports.mapPage = (req, res) => {
+  res.render('map', { title: 'Map' });
+}

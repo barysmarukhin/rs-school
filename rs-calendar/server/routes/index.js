@@ -49,7 +49,8 @@ router.get('/administrator/account/reset/:token', catchErrors(authController.res
 router.post('/administrator/account/reset/:token',
   authController.confirmedPasswords,
   catchErrors(authController.update)
-)
+);
+router.get('/administrator/map', eventController.mapPage);
 
 /*
   API
