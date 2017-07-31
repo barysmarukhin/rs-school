@@ -1,0 +1,9 @@
+mixin speakerForm(speaker = {})
+  form(action="/administrator/add-speaker" method="POST" class="card")
+    label(for="name") name
+    input(name="name" type="text" required)
+    label(for="email") Email Address
+    input(type="email" name="email" required)
+    label(for="info") Information
+    textarea(name="info")
+    input(type="submit" value="Add New Speaker" class="button")

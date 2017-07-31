@@ -13,6 +13,7 @@
   }
   &__item {
     display: flex;
+    text-align: center;
   }
   &__link {
     background: $black;
@@ -93,6 +94,7 @@
   .nav {
     &__section {
       width: 100%;
+      flex-wrap: wrap;
       &--user {
         order: -1;
         border-bottom: 1px solid rgba(255,255,255,0.1);

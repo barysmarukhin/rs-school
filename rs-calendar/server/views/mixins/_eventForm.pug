@@ -1,5 +1,5 @@
 mixin eventForm(event = {})
-  form(action=`/administrator/add/${event._id || ''}` method="POST" class="card" enctype="multipart/form-data")
+  form(action=`/administrator/add-event/${event._id || ''}` method="POST" class="card" enctype="multipart/form-data")
     label(for="name") name
     input(name="name" type="text" value=event.name)
     label(for="description") Description

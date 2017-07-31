@@ -7,7 +7,7 @@
 .event {
   background:white;
   margin: 10px 0;
-  width:30%;
+  width:48%;
   box-shadow: $shad;
   &--wide {
     width: 100%;
@@ -18,9 +18,6 @@
       line-height: 1.2;
       margin-bottom: 0;
     }
-  }
-  @media all and (max-width: 850px) {
-    width: 48%;
   }
   @media all and (max-width: 550px) {
     width: 100%;

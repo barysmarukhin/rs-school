@@ -616,7 +616,8 @@ label {
           flex: 1 1 auto; }
   .nav__item {
     display: -ms-flexbox;
-    display: flex; }
+    display: flex;
+    text-align: center; }
   .nav__link {
     background: #303030;
     color: white;
@@ -678,7 +679,9 @@ label {
 
 @media all and (max-width: 650px) {
   .nav__section {
-    width: 100%; }
+    width: 100%;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap; }
     .nav__section--user {
       -ms-flex-order: -1;
           order: -1;
@@ -703,7 +706,11 @@ label {
 .table {
   width: 100%; }
   .table td {
-    padding: 5px; }
+    padding: 10px 5px; }
+    .table td.speaker-header {
+      padding: 20px; }
+    .table td.speaker-avatar {
+      text-align: center; }
   .table tr:nth-child(even) {
     background: white; }
   .table tr:nth-child(odd):not(:first-child) {
@@ -723,7 +730,7 @@ label {
 .event {
   background: white;
   margin: 10px 0;
-  width: 30%;
+  width: 48%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.05); }
   .event--wide {
     width: 100%; }
@@ -732,9 +739,6 @@ label {
     .event__details p {
       line-height: 1.2;
       margin-bottom: 0; }
-  @media all and (max-width: 850px) {
-    .event {
-      width: 48%; } }
   @media all and (max-width: 550px) {
     .event {
       width: 100%; } }

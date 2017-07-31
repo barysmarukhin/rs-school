@@ -22,7 +22,9 @@ exports.siteName = `RS-Calendar!`;
 
 exports.menu = [
   { slug: 'events', title: 'Events', icon: 'event', },
+  { slug: 'speakers', title: 'Speakers', icon: 'speakers', },
   { slug: 'tags', title: 'Tags', icon: 'tag', },
-  { slug: 'add', title: 'Add', icon: 'add', },
+  { slug: 'add-event', title: 'Add Event', icon: 'add-event', },
+  { slug: 'add-speaker', title: 'Add Speaker', icon: 'add-speaker', },
   { slug: 'map', title: 'Map', icon: 'map', },
 ];

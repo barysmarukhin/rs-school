@@ -144,3 +144,12 @@ exports.mapEvents = async (req, res) => {
 exports.mapPage = (req, res) => {
   res.render('map', { title: 'Map' });
 }
+
+exports.showEvents = async (req, res) => {
+  const events = await Event.find().select('name desctiption location tags');
+  res.json(events);
+}
+
+exports.showSpeakers = (req, res) => {
+
+}

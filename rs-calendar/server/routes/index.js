@@ -4,6 +4,7 @@ const path = require('path');
 const eventController = require('../controllers/eventController');
 const userController = require('../controllers/userController');
 const authController = require('../controllers/authController');
+const speakerController = require('../controllers/speakerController');
 const { catchErrors } = require('../handlers/errorHandlers');
 
 // Do work here
@@ -15,17 +16,22 @@ router.get('/', (req, res) => {
 router.get('/administrator', catchErrors(eventController.getEvents));
 router.get('/administrator/events', catchErrors(eventController.getEvents));
 router.get('/administrator/events/page/:page', catchErrors(eventController.getEvents));
-router.get('/administrator/add', authController.isLoggedIn, eventController.addEvent);
-router.post('/administrator/add',
+router.get('/administrator/add-event', authController.isLoggedIn, eventController.addEvent);
+router.post('/administrator/add-event',
   eventController.upload,
   catchErrors(eventController.resize),
   catchErrors(eventController.createEvent)
 );
-router.post('/administrator/add/:id',
+router.post('/administrator/add-event/:id',
   eventController.upload,
   catchErrors(eventController.resize),
   catchErrors(eventController.updateEvent)
 );
+
+router.get('/administrator/speakers', catchErrors(speakerController.getSpeakers));
+router.get('/administrator/add-speaker', authController.isLoggedIn, speakerController.addSpeaker);
+router.post('/administrator/add-speaker', catchErrors(speakerController.createSpeaker));
+
 router.get('/administrator/events/:id/edit',catchErrors(eventController.editEvent));
 router.get('/administrator/event/:slug', catchErrors(eventController.getEventBySlug));
 
@@ -59,4 +65,6 @@ router.get('/administrator/map', eventController.mapPage);
 
 router.get('/administrator/api/search', catchErrors(eventController.searchEvents));
 router.get('/administrator/api/events/near', catchErrors(eventController.mapEvents));
+router.get('/administrator/api/events', catchErrors(eventController.showEvents));
+router.get('/administrator/api/speakers', catchErrors(eventController.showEvents));
 module.exports = router;

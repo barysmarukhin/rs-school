@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  .inner
+    h2 Speakers
+    table.table
+      thead
+        td.speaker-header Avatar
+        td.speaker-header Name
+        td.speaker-header Information
+      each speaker in speakers
+        tr
+          td.speaker-avatar
+            img.avatar(src=speaker.avatar + 'd=retro')
+          td= speaker.name
+          td= speaker.info || '-'
