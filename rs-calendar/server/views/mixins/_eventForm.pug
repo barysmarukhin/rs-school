@@ -1,25 +1,26 @@
 mixin eventForm(event = {})
   form(action=`/administrator/add-event/${event._id || ''}` method="POST" class="card" enctype="multipart/form-data")
     label(for="name") Name
-    input(name="name" type="text" value=event.name)
+    input(id="name" name="name" type="text" value=event.name)
     label(for="start") Event Starts
-    input(name="start" type="datetime-local" value=event.start)
+    input(id="start" name="start" type="datetime-local" value=event.start)
     label(for="end") Event Finishes
-    input(name="end" type="datetime-local" value=event.end)
+    input(id="end" name="end" type="datetime-local" value=event.end)
     label(for="description") Description
-    textarea(name="description")= event.description
+    textarea(id="description" name="description")= event.description
     div.label-like Select Speakers
       div.search-speakers
-        label.search-speakers__container
-          input.search-speakers__input(autocomplete="off" type="text" placeholder="Search speaker...")
-          .search-speakers__results
-          input.search-speakers__input-hidden(type="hidden" name="speakers")
-        button.search-speakers__add +
+        .search-speakers__labels
+          label.search-speakers__container(for="search-speaker")
+            input.search-speakers__input(id="search-speaker" autocomplete="off" type="text" placeholder="Search speaker...")
+            .search-speakers__results
+            input.search-speakers__input-hidden(type="hidden" name="speakers")
+        button.search-speakers__add(type="button") +
     //- Image upload
     label(for="photo") Event Photo
-      input(type="file" name="photo" id="photo" accept="image/gif, image/png, image/jpeg")
-      if(event.photo)
-        img(src=`/uploads/${event.photo}`, alt=event.name width=200)
+    input(type="file" name="photo" id="photo" accept="image/gif, image/png, image/jpeg")
+    if(event.photo)
+      img(src=`/uploads/${event.photo}`, alt=event.name width=200)
     label(for="address") Address
     input(type="text" id="address" name="location[address]" value=(event.location && event.location.address))
     label(for="lng") Address Lng

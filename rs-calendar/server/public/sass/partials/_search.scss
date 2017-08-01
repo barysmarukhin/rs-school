@@ -31,8 +31,11 @@
 .search-speakers {
   display: flex;
   justify-content: flex-start;
+  &__labels {
+    display: flex;
+    justify-content: flex-start;
+  }
   &__container {
-    width: 70%;
     margin-right: 20px;
     position: relative;
     padding: 0;
@@ -68,7 +71,7 @@
     }
   }
   &__add {
-    font-size: 35px;
+    font-size: 32px;
     width: 40px;
     height: 40px;
     border-radius:5px;

@@ -1989,46 +1989,64 @@ function searchResultsHTML(speakers) {
   }).join('');
 }
 
-function typeSpeakers(search) {
+function typeSpeakers(search, addButton) {
   if (!search) return;
-  var searchInput = search.querySelector('.search-speakers__input');
-  var searchResults = search.querySelector('.search-speakers__results');
 
-  searchInput.on('input', function () {
-    var _this = this;
-
-    if (!this.value) {
-      searchResults.style.display = 'none';
+  addButton.on('click', function () {
+    var labels = search.querySelector('.search-speakers__labels');
+    var newLabel = document.createElement('label');
+    newLabel.setAttribute('for', 'search-speaker');
+    newLabel.setAttribute('class', 'search-speakers__container');
+    var newSpeakerHTML = '<input id="search-speaker" type="text" autocomplete="off" type="text" placeholder="Search speaker..." class="search-speakers__input"><div class="search-speakers__results"></div><input type="hidden" name="speakers" class="search-speakers__input-hidden">';
+    newLabel.innerHTML = newSpeakerHTML;
+    labels.appendChild(newLabel);
+    // labels.innerHTML += newSpeakerField;
+  });
+  search.on('input', function (e) {
+    var currentSearchInput = e.target;
+    var currentSearchResults = currentSearchInput.parentNode.querySelector('.search-speakers__results');
+    if (!currentSearchInput.value) {
+      currentSearchResults.style.display = 'none';
       return;
     }
-
-    searchResults.style.display = 'block';
-    _axios2.default.get('/administrator/api/search-speakers?q=' + this.value).then(function (res) {
+    currentSearchResults.style.display = 'block';
+    _axios2.default.get('/administrator/api/search-speakers?q=' + currentSearchInput.value).then(function (res) {
       if (res.data.length) {
-        searchResults.innerHTML = _dompurify2.default.sanitize(searchResultsHTML(res.data));
+        currentSearchResults.innerHTML = _dompurify2.default.sanitize(searchResultsHTML(res.data));
         return;
       }
-      searchResults.innerHTML = _dompurify2.default.sanitize('<div class="search-speakers__result"><span class="search-speakers__result-text">No results for ' + _this.value + '</span></div>');
+      currentSearchResults.innerHTML = _dompurify2.default.sanitize('<div class="search-speakers__result"><span class="search-speakers__result-text">No results for ' + currentSearchInput.value + '</span></div>');
     }).catch(function (err) {
       console.error(err);
     });
   });
 
-  searchResults.on('click', function (e) {
-    searchInput.value = e.target.innerText;
-    var searchInputHidden = this.parentNode.querySelector('.search-speakers__input-hidden');
-    searchInputHidden.value = e.target.parentNode.querySelector('.search-speakers__result-id').innerText;
-    clear(searchResults);
+  search.on('click', function (e) {
+    if (!e.target.classList.contains('search-speakers__result-text')) {
+      return;
+    }
+    var currentSearchText = e.target; //register the click on single speaker came from ajax
+    var currentSearchResult = currentSearchText.parentNode;
+    var currentSearchResults = currentSearchResult.parentNode;
+    var currentSearchContainer = currentSearchResults.parentNode;
+    var currentSearchInput = currentSearchContainer.querySelector('.search-speakers__input');
+    var searchInputHidden = currentSearchContainer.querySelector('.search-speakers__input-hidden');
+    currentSearchInput.value = currentSearchText.innerText;
+    searchInputHidden.value = currentSearchResult.querySelector('.search-speakers__result-id').innerText;
+    clear(currentSearchResults);
   });
 
-  searchInput.on('keydown', function (e) {
-    //git they aren't pressing up, down or enter, who cares!
+  search.on('keydown', function (e) {
     if (![38, 40, 13].includes(e.keyCode)) {
+      //if they aren't pressing up, down or enter, who cares!
       return;
     }
     var activeClass = 'search-speakers__result--active';
-    var current = search.querySelector('.' + activeClass);
-    var items = search.querySelectorAll('.search-speakers__result');
+    var currentSearchInput = e.target;
+    var currentSeachContainer = currentSearchInput.parentNode;
+    var currentSearchResults = currentSeachContainer.querySelector('.search-speakers__results');
+    var current = currentSearchResults.querySelector('.' + activeClass);
+    var items = currentSearchResults.querySelectorAll('.search-speakers__result');
     var next = void 0;
     if (e.keyCode === 40 && current) {
       next = current.nextElementSibling || items[0];
@@ -2040,8 +2058,8 @@ function typeSpeakers(search) {
       next = items[items.length - 1];
     } else if (e.keyCode === 13 && current) {
       e.preventDefault();
-      searchInput.value = current.innerText;
-      clear(searchResults);
+      currentSearchInput.value = current.querySelector('.search-speakers__result-text').innerText;
+      clear(currentSearchResults);
       return;
     }
     if (current) {
@@ -2878,7 +2896,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 (0, _autocomplete2.default)((0, _bling.$)('#address'), (0, _bling.$)('#lat'), (0, _bling.$)('#lng'));
 (0, _typeAhead2.default)((0, _bling.$)('.search'));
-(0, _typeSpeakers2.default)((0, _bling.$)('.search-speakers'));
+(0, _typeSpeakers2.default)((0, _bling.$)('.search-speakers'), (0, _bling.$)('.search-speakers__add'));
 (0, _map2.default)((0, _bling.$)('#map'));
 
 /***/ })

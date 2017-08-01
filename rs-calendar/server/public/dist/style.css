@@ -554,8 +554,12 @@ label {
   display: flex;
   -ms-flex-pack: start;
       justify-content: flex-start; }
+  .search-speakers__labels {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: start;
+        justify-content: flex-start; }
   .search-speakers__container {
-    width: 70%;
     margin-right: 20px;
     position: relative;
     padding: 0; }
@@ -583,7 +587,7 @@ label {
       top: 0;
       left: -9999px; }
   .search-speakers__add {
-    font-size: 35px;
+    font-size: 32px;
     width: 40px;
     height: 40px;
     border-radius: 5px;

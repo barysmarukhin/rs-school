@@ -17,47 +17,66 @@ function searchResultsHTML(speakers) {
   }).join('');
 }
 
-function typeSpeakers (search){
+function typeSpeakers (search, addButton){
   if(!search) return;
-  const searchInput = search.querySelector('.search-speakers__input');
-  const searchResults = search.querySelector('.search-speakers__results');
 
-  searchInput.on('input', function() {
-    if (!this.value){
-      searchResults.style.display = 'none';
+  addButton.on('click', function(){
+    const labels = search.querySelector('.search-speakers__labels');
+    const newLabel = document.createElement('label');
+    newLabel.setAttribute('for', 'search-speaker');
+    newLabel.setAttribute('class', 'search-speakers__container');
+    const newSpeakerHTML = '<input id="search-speaker" type="text" autocomplete="off" type="text" placeholder="Search speaker..." class="search-speakers__input"><div class="search-speakers__results"></div><input type="hidden" name="speakers" class="search-speakers__input-hidden">';
+    newLabel.innerHTML = newSpeakerHTML;
+    labels.appendChild(newLabel);
+    // labels.innerHTML += newSpeakerField;
+  });
+  search.on('input', function(e) {
+    const currentSearchInput = e.target;
+    const currentSearchResults = currentSearchInput.parentNode.querySelector('.search-speakers__results');
+    if (!currentSearchInput.value){
+      currentSearchResults.style.display = 'none';
       return;
     }
-
-    searchResults.style.display = 'block';
+    currentSearchResults.style.display = 'block';
     axios
-      .get(`/administrator/api/search-speakers?q=${this.value}`)
+      .get(`/administrator/api/search-speakers?q=${currentSearchInput.value}`)
       .then(res => {
         if(res.data.length) {
-          searchResults.innerHTML = dompurify.sanitize(searchResultsHTML(res.data))
+          currentSearchResults.innerHTML = dompurify.sanitize(searchResultsHTML(res.data))
           return;
         }
-        searchResults.innerHTML = dompurify.sanitize(`<div class="search-speakers__result"><span class="search-speakers__result-text">No results for ${this.value}</span></div>`)
+        currentSearchResults.innerHTML = dompurify.sanitize(`<div class="search-speakers__result"><span class="search-speakers__result-text">No results for ${currentSearchInput.value}</span></div>`)
       })
       .catch(err => {
         console.error(err);
       });
   });
 
-  searchResults.on('click', function(e) {
-    searchInput.value = e.target.innerText;
-    const searchInputHidden = this.parentNode.querySelector('.search-speakers__input-hidden');
-    searchInputHidden.value = e.target.parentNode.querySelector('.search-speakers__result-id').innerText;
-    clear(searchResults);
+  search.on('click', function(e) {
+    if(!e.target.classList.contains('search-speakers__result-text')) {
+      return;
+    }
+    const currentSearchText = e.target;//register the click on single speaker came from ajax
+    const currentSearchResult = currentSearchText.parentNode;
+    const currentSearchResults = currentSearchResult.parentNode;
+    const currentSearchContainer = currentSearchResults.parentNode;
+    const currentSearchInput = currentSearchContainer.querySelector('.search-speakers__input')
+    const searchInputHidden = currentSearchContainer.querySelector('.search-speakers__input-hidden');
+    currentSearchInput.value = currentSearchText.innerText;
+    searchInputHidden.value = currentSearchResult.querySelector('.search-speakers__result-id').innerText;
+    clear(currentSearchResults);
   })
 
-  searchInput.on('keydown', (e) => {
-    //git they aren't pressing up, down or enter, who cares!
-    if(![38, 40, 13].includes(e.keyCode)){
+  search.on('keydown', (e) => {
+    if(![38, 40, 13].includes(e.keyCode)){ //if they aren't pressing up, down or enter, who cares!
       return
     }
     const activeClass = 'search-speakers__result--active';
-    const current = search.querySelector(`.${activeClass}`);
-    const items = search.querySelectorAll('.search-speakers__result');
+    const currentSearchInput = e.target;
+    const currentSeachContainer = currentSearchInput.parentNode;
+    const currentSearchResults = currentSeachContainer.querySelector('.search-speakers__results');
+    const current = currentSearchResults.querySelector(`.${activeClass}`);
+    const items = currentSearchResults.querySelectorAll('.search-speakers__result');
     let next;
     if (e.keyCode === 40 && current) {
       next = current.nextElementSibling || items[0];
@@ -69,8 +88,8 @@ function typeSpeakers (search){
       next = items[items.length - 1];
     } else if (e.keyCode === 13 && current) {
       e.preventDefault();
-      searchInput.value = current.innerText;
-      clear(searchResults);
+      currentSearchInput.value = current.querySelector('.search-speakers__result-text').innerText;
+      clear(currentSearchResults);
       return;
     }
     if(current) {

@@ -8,5 +8,5 @@ import makeMap from './modules/map';
 
 autocomplete( $('#address'), $('#lat'), $('#lng') );
 typeAhead($('.search'));
-typeSpeakers($('.search-speakers'))
+typeSpeakers($('.search-speakers'), $('.search-speakers__add'))
 makeMap($('#map'));
