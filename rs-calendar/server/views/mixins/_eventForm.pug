@@ -1,9 +1,20 @@
 mixin eventForm(event = {})
   form(action=`/administrator/add-event/${event._id || ''}` method="POST" class="card" enctype="multipart/form-data")
-    label(for="name") name
+    label(for="name") Name
     input(name="name" type="text" value=event.name)
+    label(for="start") Event Starts
+    input(name="start" type="datetime-local" value=event.start)
+    label(for="end") Event Finishes
+    input(name="end" type="datetime-local" value=event.end)
     label(for="description") Description
     textarea(name="description")= event.description
+    div.label-like Select Speakers
+      div.search-speakers
+        label.search-speakers__container
+          input.search-speakers__input(autocomplete="off" type="text" placeholder="Search speaker...")
+          .search-speakers__results
+          input.search-speakers__input-hidden(type="hidden" name="speakers")
+        button.search-speakers__add +
     //- Image upload
     label(for="photo") Event Photo
       input(type="file" name="photo" id="photo" accept="image/gif, image/png, image/jpeg")

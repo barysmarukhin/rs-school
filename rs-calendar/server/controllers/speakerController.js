@@ -15,3 +15,19 @@ exports.createSpeaker = async (req, res) => {
   req.flash('success', `Speaker <strong>${speaker.name}</strong> successfully added`)
   res.redirect('back');
 }
+
+exports.searchSpeakers = async (req, res) => {
+  const events = await Speaker.find({
+    $text: {
+      $search: req.query.q
+    }
+  }, {
+    score: { $meta: 'textScore' }//now we project(create) a new field named score
+  })
+  //sort by score
+  .sort({
+    score: { $meta: 'textScore' }
+  })
+  .limit(5);
+  res.json(events);
+}

@@ -64,6 +64,7 @@ router.get('/administrator/map', eventController.mapPage);
 */
 
 router.get('/administrator/api/search', catchErrors(eventController.searchEvents));
+router.get('/administrator/api/search-speakers', catchErrors(speakerController.searchSpeakers));
 router.get('/administrator/api/events/near', catchErrors(eventController.mapEvents));
 router.get('/administrator/api/events', catchErrors(eventController.showEvents));
 router.get('/administrator/api/speakers', catchErrors(eventController.showEvents));

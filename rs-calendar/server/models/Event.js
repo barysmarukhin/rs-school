@@ -18,6 +18,17 @@ const eventSchema = new mongoose.Schema({
     type: Date,
     default: Date.now()
   },
+  start: {
+    type: Date,
+    default: Date.now(),
+    require: 'Please specify the begining of the event'
+  },
+  end: {
+    type: Date,
+    default: Date.now(),
+    require: 'Please specify the ending of the event'
+  },
+  duration: Number,
   location: {
     type: {
       type: String,
@@ -37,7 +48,8 @@ const eventSchema = new mongoose.Schema({
     type: mongoose.Schema.ObjectId,
     ref: 'User',
     required: 'You must supply an author!'
-  }
+  },
+  speakers: []
 });
 
 eventSchema.index({

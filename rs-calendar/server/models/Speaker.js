@@ -29,4 +29,8 @@ speakerSchema.virtual('avatar').get(function() {
   return `https://gravatar.com/avatar/${hash}?s=200`;
 });
 
+speakerSchema.index({
+  name: 'text',
+})
+
 module.exports = mongoose.model('Speaker', speakerSchema)

@@ -3,6 +3,7 @@ const Event = mongoose.model('Event');
 const multer = require('multer');//to store photos in the memory of the server
 const jimp = require('jimp');// to resize
 const uuid = require('uuid');//to give a random unique name
+const moment = require('moment');
 
 const multerOptions = {
   storage: multer.memoryStorage(),
@@ -60,6 +61,10 @@ exports.resize = async (req, res, next) => {
 
 exports.createEvent = async (req, res) => {
   req.body.author = req.user._id;
+  const start = moment(req.body.start);
+  const end = moment(req.body.end);
+  req.body.duration = end.diff(start,'seconds')
+  console.log(req.body);
   const event = await (new Event(req.body)).save();
   req.flash('success', `Your event <strong>${event.name}</strong> successfully added`)
   res.redirect(`/administrator/event/${event.slug}`);
