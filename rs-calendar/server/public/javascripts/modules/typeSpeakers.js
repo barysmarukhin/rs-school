@@ -25,7 +25,7 @@ function typeSpeakers (search, addButton){
     const newLabel = document.createElement('label');
     newLabel.setAttribute('for', 'search-speaker');
     newLabel.setAttribute('class', 'search-speakers__container');
-    const newSpeakerHTML = '<input id="search-speaker" type="text" autocomplete="off" type="text" placeholder="Search speaker..." class="search-speakers__input"><div class="search-speakers__results"></div><input type="hidden" name="speakers" class="search-speakers__input-hidden">';
+    const newSpeakerHTML = '<span class="search-speakers__remove">x</span><input id="search-speaker" type="text" autocomplete="off" type="text" placeholder="Search speaker..." class="search-speakers__input"><div class="search-speakers__results"></div><input type="hidden" name="speakers" class="search-speakers__input-hidden">';
     newLabel.innerHTML = newSpeakerHTML;
     labels.appendChild(newLabel);
     // labels.innerHTML += newSpeakerField;
@@ -53,18 +53,21 @@ function typeSpeakers (search, addButton){
   });
 
   search.on('click', function(e) {
-    if(!e.target.classList.contains('search-speakers__result-text')) {
-      return;
+    if(e.target.classList.contains('search-speakers__result-text')) {
+      const currentSearchText = e.target;//register the click on single speaker came from ajax
+      const currentSearchResult = currentSearchText.parentNode;
+      const currentSearchResults = currentSearchResult.parentNode;
+      const currentSearchContainer = currentSearchResults.parentNode;
+      const currentSearchInput = currentSearchContainer.querySelector('.search-speakers__input')
+      const searchInputHidden = currentSearchContainer.querySelector('.search-speakers__input-hidden');
+      currentSearchInput.value = currentSearchText.innerText;
+      searchInputHidden.value = currentSearchResult.querySelector('.search-speakers__result-id').innerText;
+      clear(currentSearchResults);
+    } else if(e.target.classList.contains('search-speakers__remove')){
+      const currentRemoveButton = e.target;
+      const currentSpeakerField = currentRemoveButton.parentNode;
+      currentSpeakerField.remove();
     }
-    const currentSearchText = e.target;//register the click on single speaker came from ajax
-    const currentSearchResult = currentSearchText.parentNode;
-    const currentSearchResults = currentSearchResult.parentNode;
-    const currentSearchContainer = currentSearchResults.parentNode;
-    const currentSearchInput = currentSearchContainer.querySelector('.search-speakers__input')
-    const searchInputHidden = currentSearchContainer.querySelector('.search-speakers__input-hidden');
-    currentSearchInput.value = currentSearchText.innerText;
-    searchInputHidden.value = currentSearchResult.querySelector('.search-speakers__result-id').innerText;
-    clear(currentSearchResults);
   })
 
   search.on('keydown', (e) => {

@@ -12,7 +12,7 @@ mixin eventForm(event = {})
       div.search-speakers
         .search-speakers__labels
           label.search-speakers__container(for="search-speaker")
-            input.search-speakers__input(id="search-speaker" autocomplete="off" type="text" placeholder="Search speaker...")
+            input.search-speakers__input(id="search-speaker" autocomplete="off" type="text" placeholder="Search speaker..." required)
             .search-speakers__results
             input.search-speakers__input-hidden(type="hidden" name="speakers")
         button.search-speakers__add(type="button") +

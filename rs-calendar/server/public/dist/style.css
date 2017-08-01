@@ -563,6 +563,21 @@ label {
     margin-right: 20px;
     position: relative;
     padding: 0; }
+  .search-speakers__remove {
+    position: absolute;
+    cursor: pointer;
+    right: -9px;
+    top: 0px;
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #000000;
+    color: #ffffff;
+    opacity: .6;
+    transition: all .3s ease-in; }
+    .search-speakers__remove:hover {
+      opacity: 1; }
   .search-speakers__input {
     margin: 10px 0; }
   .search-speakers__results {
