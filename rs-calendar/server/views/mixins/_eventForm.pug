@@ -1,11 +1,12 @@
 mixin eventForm(event = {})
+  pre= h.dump(event)
   form(action=`/administrator/add-event/${event._id || ''}` method="POST" class="card" enctype="multipart/form-data")
     label(for="name") Name
     input(id="name" name="name" type="text" value=event.name)
     label(for="start") Event Starts
-    input(id="start" name="start" type="datetime-local" value=event.start)
+    input(id="start" name="start" type="datetime-local" value=event.start requred)
     label(for="end") Event Finishes
-    input(id="end" name="end" type="datetime-local" value=event.end)
+    input(id="end" name="end" type="datetime-local" value=event.end requred)
     label(for="description") Description
     textarea(id="description" name="description")= event.description
     div.label-like Select Speakers
@@ -32,6 +33,6 @@ mixin eventForm(event = {})
     ul.tags
       each choice in choices
         .tag.tag__choice
-          input(type="checkbox" id=choice value=choice name="tags" checked=(tags.includes(choice)))
+          input(type="radio" id=choice value=choice name="tags" checked=(tags.includes(choice)))
           label(for=choice) #{choice}
     input(type="submit" value="Save" class="button")

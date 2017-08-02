@@ -17,6 +17,10 @@ const speakerSchema = new mongoose.Schema({
     validate: [validator.isEmail, 'Invalid Email Address'],
     required: 'Please supply an Email Address'
   },
+  avatar: {
+    type: String,
+    trim: true
+  },
   info: {
     type: String,
     trim: true
@@ -24,10 +28,10 @@ const speakerSchema = new mongoose.Schema({
 });
 
 //virtual field is something that can be generated
-speakerSchema.virtual('avatar').get(function() {
-  const hash = md5(this.email);
-  return `https://gravatar.com/avatar/${hash}?s=200`;
-});
+// speakerSchema.virtual('avatar').get(function() {
+//   const hash = md5(this.email);
+//   return `https://gravatar.com/avatar/${hash}?s=200`;
+// });
 
 speakerSchema.index({
   name: 'text',

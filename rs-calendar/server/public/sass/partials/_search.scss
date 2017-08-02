@@ -34,11 +34,15 @@
   &__labels {
     display: flex;
     justify-content: flex-start;
+    flex-wrap: wrap;
+    max-width: 640px;
+
   }
   &__container {
     margin-right: 20px;
     position: relative;
     padding: 0;
+    min-width: 300px;
   }
   &__remove {
     position: absolute;
@@ -95,5 +99,16 @@
     background-color: #FFC40E;
     border: 0;
     margin: 10px 0;
+  }
+}
+@media (max-width: 992px) {
+  .search-speakers {
+    &__labels {
+      flex-direction: column;
+      max-width: 320px;
+    }
+    // &__container {
+    //   width:100%
+    // }
   }
 }

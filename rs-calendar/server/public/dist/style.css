@@ -558,11 +558,15 @@ label {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-pack: start;
-        justify-content: flex-start; }
+        justify-content: flex-start;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    max-width: 640px; }
   .search-speakers__container {
     margin-right: 20px;
     position: relative;
-    padding: 0; }
+    padding: 0;
+    min-width: 300px; }
   .search-speakers__remove {
     position: absolute;
     cursor: pointer;
@@ -609,6 +613,12 @@ label {
     background-color: #FFC40E;
     border: 0;
     margin: 10px 0; }
+
+@media (max-width: 992px) {
+  .search-speakers__labels {
+    -ms-flex-direction: column;
+        flex-direction: column;
+    max-width: 320px; } }
 
 @keyframes slideIn {
   0% {
@@ -682,6 +692,8 @@ label {
     display: -ms-flexbox;
     display: flex;
     text-align: center; }
+    .nav__item.login {
+      min-width: 80px; }
   .nav__link {
     background: #303030;
     color: white;

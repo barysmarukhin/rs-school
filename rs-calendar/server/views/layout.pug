@@ -37,7 +37,7 @@ html
                 img.avatar(src=user.gravatar + 'd=retro')
             else
               li.nav__item: a.nav__link(href="/administrator/register", class=(currentPath.startsWith('/register') ? 'nav__link--active' : '')) Register
-              li.nav__item: a.nav__link(href="/administrator/login", class=(currentPath.startsWith('/administrator/login') ? 'nav__link--active' : '')) Log In
+              li.nav__item.login: a.nav__link(href="/administrator/login", class=(currentPath.startsWith('/administrator/login') ? 'nav__link--active' : '')) Log In
 
     block messages
       if locals.flashes

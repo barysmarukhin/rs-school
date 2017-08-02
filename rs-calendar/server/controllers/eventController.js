@@ -151,10 +151,6 @@ exports.mapPage = (req, res) => {
 }
 
 exports.showEvents = async (req, res) => {
-  const events = await Event.find().select('name desctiption location tags');
+  const events = await Event.find().select('name start duration description location tags speakers');
   res.json(events);
-}
-
-exports.showSpeakers = (req, res) => {
-
 }
