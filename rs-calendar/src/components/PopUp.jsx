@@ -36,7 +36,6 @@ class PopUp extends Component {
       start,
       duration,
       speakers,
-      resources,
       location,
       description
     } = this.props;
@@ -73,7 +72,7 @@ class PopUp extends Component {
                       <i className="fa fa-spinner fa-spin"></i>
                     :
                       speakersFromState.filter((speakerFromState) => {
-                        return speakers.indexOf(speakerFromState.id) !== -1
+                        return speakers.indexOf(speakerFromState._id) !== -1
                       }).map((filteredSpeaker, index) => {
                         return (
                           <div key={index} className="speaker-wrapper">
@@ -92,30 +91,15 @@ class PopUp extends Component {
             <span>{location}</span>
           </div>
           <hr/>
-          <GMap address = 'улица Фабрициуса 4, Минск' />
-          <hr/>
+          <GMap address={location} />
+        </ModalHeader>
+        <ModalBody>
           <div className="event-detail">
             <span><strong>Info</strong></span>
             <span>{description}</span>
           </div>
-        </ModalHeader>
-        <ModalBody>
-          <ModalTitle>Resources</ModalTitle>
-          <div className="resources-wrapper">
-            {resources.map((resource, index) => {
-              return (
-                <div key={index} className="resource-wrapper">
-                  <h5 className="resource-title"><strong>{resource.type}</strong></h5>
-                  <a href={resource.resource} className="resource-link">
-                    View Details
-                  </a>
-                  <p className="resource-info">{resource.description}</p>
-                </div>
-              )
-            })}
-          </div>
           <hr/>
-          <h5 className="feedback-title">Add You Feedback Here:</h5>
+          <h5 className="feedback-title">Add Your Feedback Here:</h5>
           <FeedBack/>
         </ModalBody>
       </Modal>

@@ -1,21 +1,28 @@
 mixin eventForm(event = {})
-  pre= h.dump(event)
   form(action=`/administrator/add-event/${event._id || ''}` method="POST" class="card" enctype="multipart/form-data")
     label(for="name") Name
     input(id="name" name="name" type="text" value=event.name)
     label(for="start") Event Starts
-    input(id="start" name="start" type="datetime-local" value=event.start requred)
+    input(id="start" name="start" type="datetime-local" value=(event.start && event.start.toISOString().substr(0,16)) required)
     label(for="end") Event Finishes
-    input(id="end" name="end" type="datetime-local" value=event.end requred)
+    input(id="end" name="end" type="datetime-local" value=(event.end && event.end.toISOString().substr(0,16)) required)
     label(for="description") Description
     textarea(id="description" name="description")= event.description
     div.label-like Select Speakers
       div.search-speakers
         .search-speakers__labels
           label.search-speakers__container(for="search-speaker")
-            input.search-speakers__input(id="search-speaker" autocomplete="off" type="text" placeholder="Search speaker..." required)
+            input.search-speakers__input(id="search-speaker" autocomplete="off" type="text" name="speaker-names" value=event.speakers[0].name placeholder="Search speaker..." required)
             .search-speakers__results
-            input.search-speakers__input-hidden(type="hidden" name="speakers")
+            input.search-speakers__input-hidden(type="hidden" name="speakers" value=event.speakers[0]._id)
+          if event.speakers.length > 1
+            - const restSpeakers = event.speakers.slice(1)
+            each speaker,i in restSpeakers
+              label.search-speakers__container(for="search-speaker")
+                span.search-speakers__remove x
+                input.search-speakers__input(id="search-speaker" autocomplete="off" type="text" name="speaker-names" value=event.speakers[i+1].name placeholder="Search speaker..." required)
+                .search-speakers__results
+                input.search-speakers__input-hidden(type="hidden" name="speakers" value=event.speakers[i+1]._id)
         button.search-speakers__add(type="button") +
     //- Image upload
     label(for="photo") Event Photo

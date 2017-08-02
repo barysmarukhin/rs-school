@@ -693,7 +693,7 @@ label {
     display: flex;
     text-align: center; }
     .nav__item.login {
-      min-width: 80px; }
+      min-width: 100px; }
   .nav__link {
     background: #303030;
     color: white;
@@ -780,7 +780,8 @@ label {
     margin-right: 1rem; } }
 
 .table {
-  width: 100%; }
+  width: 100%;
+  margin-bottom: 30px; }
   .table td {
     padding: 10px 5px; }
     .table td.speaker-header {

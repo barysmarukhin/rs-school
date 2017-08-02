@@ -49,7 +49,7 @@ const eventSchema = new mongoose.Schema({
     ref: 'User',
     required: 'You must supply an author!'
   },
-  speakers: []
+  speakers: [{ type: mongoose.Schema.ObjectId, ref: 'Speaker' }]
 });
 
 eventSchema.index({

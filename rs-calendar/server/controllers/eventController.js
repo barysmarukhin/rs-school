@@ -64,7 +64,6 @@ exports.createEvent = async (req, res) => {
   const start = moment(req.body.start);
   const end = moment(req.body.end);
   req.body.duration = end.diff(start,'seconds')
-  console.log(req.body);
   const event = await (new Event(req.body)).save();
   req.flash('success', `Your event <strong>${event.name}</strong> successfully added`)
   res.redirect(`/administrator/event/${event.slug}`);
@@ -78,7 +77,7 @@ const confirmOwner = (event, user) => {
 
 exports.editEvent = async (req, res) => {
   //1. Find the event given the ID
-  const event = await Event.findOne({_id: req.params.id});
+  const event = await Event.findOne({_id: req.params.id}).populate('speakers');
   //2. Confirm they are the owner of the event
   confirmOwner(event, req.user)
   //3. Render out the edit form so the user can update their event

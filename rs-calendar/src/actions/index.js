@@ -47,7 +47,7 @@ export const getEvents = () => dispatch => {
       type: GET_EVENTS,
       payload: 'fetching'
     })
-  const url=`http://128.199.53.150/events`;
+  const url=`http://localhost:7777/administrator/api/events`;
   getData(url,'events').then(events => dispatch(events));
 }
 
@@ -56,7 +56,7 @@ export const getSpeakers = () => dispatch => {
       type: GET_SPEAKERS,
       payload: 'fetching'
     })
-  const url=`http://128.199.53.150/trainers`;
+  const url=`http://localhost:7777/administrator/api/speakers`;
   getData(url,'speakers').then(speakers => dispatch(speakers));
 }
 

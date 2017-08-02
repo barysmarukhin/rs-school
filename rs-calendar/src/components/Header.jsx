@@ -17,7 +17,10 @@ const Header = (props) => {
           <Link className="header__link btn btn-default" to="/day-view">Day</Link>
           <Link className="header__link btn btn-default" to="/agenda-view">Agenda</Link>
         </ul>
-        <button className="today header__link btn btn-success" onClick={()=>props.changeDate(moment())}>Today</button>
+        <div>
+          <button className="today header__link btn btn-success" onClick={()=>props.changeDate(moment())}>Today</button>
+          <a href="/administrator" className="today header__link btn btn-primary">Move To Admin Page</a>
+        </div>
       </div>
     </header>
   )

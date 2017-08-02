@@ -257,19 +257,19 @@ body {
   text-decoration: none;
 }
 /*EventType colors*/
-.webinar {
+.Webinar {
   background-color: #5cb85c;
 }
-.lecture {
+.Lecture {
   background-color: #f9f9f9;
 }
-.workshop {
+.Workshop {
   background-color: #5bc0de;
 }
-.deadline {
+.Deadline {
   background-color: #d9534f;
 }
-.event {
+.Event {
   background-color: #428bca;
 }
 /*Modal styles*/

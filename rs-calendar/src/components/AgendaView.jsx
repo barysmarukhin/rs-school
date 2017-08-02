@@ -18,7 +18,6 @@ class AgendaView extends Component {
         title: null,
         start: null,
         speakers: null,
-        resources: null,
         location: null,
         id: null,
         duration: null,
@@ -52,13 +51,12 @@ class AgendaView extends Component {
       return moment(left.start).diff(moment(right.start))
     }).map((event, index) => {
       const newCurrentEvent = Object.assign({}, this.state.currentEvent);
-      newCurrentEvent.type = event.type;
-      newCurrentEvent.title = event.title;
+      newCurrentEvent.type = event.tags[0];
+      newCurrentEvent.title = event.name;
       newCurrentEvent.start = event.start;
       newCurrentEvent.speakers = event.speakers;
-      newCurrentEvent.resources = event.resources;
-      newCurrentEvent.location = event.location;
-      newCurrentEvent.id = event.id;
+      newCurrentEvent.location = event.location.address;
+      newCurrentEvent.id = event._id;
       newCurrentEvent.duration = event.duration;
       newCurrentEvent.description = event.description;
       return (
@@ -73,15 +71,15 @@ class AgendaView extends Component {
                   currentEvent: newCurrentEvent
                 })}
                 >
-                <em>{event.title}</em>
+                <em>{event.name}</em>
               </td>
               <td
-                className={cn("agenda-view__item", "agenda-view__item--link", { [`${event.type}`]: true })}
+                className={cn("agenda-view__item", "agenda-view__item--link", { [`${event.tags[0]}`]: true })}
                   onClick={()=>this.setState({
                     showModalComponent: true,
                     currentEvent: newCurrentEvent
                   })}
-                >{event.type}
+                >{event.tags[0]}
               </td>
             </tr>
           </tbody>

@@ -15,7 +15,6 @@ class MonthViewDay extends React.Component {
         title: null,
         start: null,
         speakers: null,
-        resources: null,
         location: null,
         id: null,
         duration: null,
@@ -36,18 +35,17 @@ class MonthViewDay extends React.Component {
         return moment(event.start).format('D M YYYY') === date.format('D M YYYY')
       }).map((event, index)=>{
         const newCurrentEvent = Object.assign({}, this.state.currentEvent);
-        newCurrentEvent.type = event.type;
-        newCurrentEvent.title = event.title;
+        newCurrentEvent.type = event.tags[0];
+        newCurrentEvent.title = event.name;
         newCurrentEvent.start = event.start;
         newCurrentEvent.speakers = event.speakers;
-        newCurrentEvent.resources = event.resources;
-        newCurrentEvent.location = event.location;
-        newCurrentEvent.id = event.id;
+        newCurrentEvent.location = event.location.address;
+        newCurrentEvent.id = event._id;
         newCurrentEvent.duration = event.duration;
         newCurrentEvent.description = event.description;
         return (
           <div
-            className={cn("day__event-item",{ [`${event.type}`]: true })}
+            className={cn("day__event-item",{ [`${event.tags[0]}`]: true })}
             style={{cursor:'pointer'}}
             onClick={()=>this.setState({
               showModalComponent: true,
@@ -56,7 +54,7 @@ class MonthViewDay extends React.Component {
             key={index}
             >
             {moment(event.start).clone().format('HH:mm:ss')}&nbsp;
-            {event.title}
+            {event.name}
           </div>
         )
       })

@@ -16,7 +16,6 @@ class TimeLine extends React.Component {
         title: null,
         start: null,
         speakers: null,
-        resources: null,
         location: null,
         id: null,
         duration: null,
@@ -62,18 +61,18 @@ class TimeLine extends React.Component {
       }
       for(let j = 0; j < dayEvents.length; j++){
         const newCurrentEvent = Object.assign({}, this.state.currentEvent);
-        newCurrentEvent.type = dayEvents[j].type;
-        newCurrentEvent.title = dayEvents[j].title;
+        newCurrentEvent.type = dayEvents[j].tags[0];
+        newCurrentEvent.title = dayEvents[j].name;
         newCurrentEvent.start = dayEvents[j].start;
         newCurrentEvent.speakers = dayEvents[j].speakers;
-        newCurrentEvent.resources = dayEvents[j].resources;
-        newCurrentEvent.location = dayEvents[j].location;
-        newCurrentEvent.id = dayEvents[j].id;
+        newCurrentEvent.location = dayEvents[j].location.address;
+        newCurrentEvent.id = dayEvents[j]._id;
         newCurrentEvent.duration = dayEvents[j].duration;
         newCurrentEvent.description = dayEvents[j].description;
         const start = moment(dayEvents[j].start).clone();
         const duration = dayEvents[j].duration;
-        if(start.isAfter(time) && start.isBefore(time.clone().add(10,'minute'))) {
+
+        if(start.isSameOrAfter(time) && start.isBefore(time.clone().add(10,'minute'))) {
           const beginDate = start.format('DD MMM YYYY');
           const beginTime = start.format('HH:mm:ss');
           const endDate = start.add(duration, 'ms').format('DD MMM YYYY');
@@ -81,15 +80,15 @@ class TimeLine extends React.Component {
           timeCellItems.push(
             <article
               style={{top:`${top}px`, cursor:'pointer'}}
-              className={cn("timeline__item-event",{[`${dayEvents[j].type}`]:true})}
+              className={cn("timeline__item-event",{[`${dayEvents[j].tags[0]}`]:true})}
               key={Math.random()}
               onClick={()=>this.setState({
                 showModalComponent: true,
                 currentEvent: newCurrentEvent
               })}
             >
-              <h3 className="event__title"><strong>{dayEvents[j].title}</strong></h3>
-              <h4>{dayEvents[j].type}</h4>
+              <h3 className="event__title"><strong>{dayEvents[j].name}</strong></h3>
+              <h4>{dayEvents[j].tags[0]}</h4>
               <div className="event__content">
                 <p>
                   <strong><em>Begin</em></strong>&nbsp;{beginDate}&nbsp;{beginTime}
@@ -98,7 +97,7 @@ class TimeLine extends React.Component {
                   <strong><em>End</em></strong>&nbsp;{endDate}&nbsp;{endTime}
                 </p>
                 <p>
-                  <strong><em>Address</em></strong>&nbsp;{dayEvents[j].location}
+                  <strong><em>Address</em></strong>&nbsp;{dayEvents[j].location.address}
                 </p>
               </div>
             </article>
