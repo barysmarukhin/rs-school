@@ -31,9 +31,10 @@
     justify-content: center;
     transition: transform 0.2s;
     border-bottom: 5px solid transparent;
+    max-height: 115px;
     svg {
       width: 40px;
-      height: 30px;
+      height: auto;
       transition: all 0.2s;
       fill: white;
       margin-bottom: 1rem;
