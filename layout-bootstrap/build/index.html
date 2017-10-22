@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html ru-Ru>
+<head>
+  <meta charset="UTF-8">
+  <title>Bootstrap layout</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link href="https://fonts.googleapis.com/css?family=Lato:700" rel="stylesheet">
+  <link rel="stylesheet" href="styles/bootstrap.css">
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+  <header class="header">
+    <nav class="header__nav navbar navbar-default navbar-fixed-top">
+      <div class="header__container container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand logo" href="index.html">
+              <img class="logo__img" alt="Brand" src="images/logo.png">
+            </a>
+          </div>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="header__menu collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="header__menu-list nav navbar-nav">
+              <li><a class="header__menu-item" href="#">Home</a></li>
+              <li><a class="header__menu-item" href="#">Portfolio</a></li>
+              <li><a class="header__menu-item" href="#">Blog</a></li>
+              <li><a class="header__menu-item" href="#">Pages</a></li>
+              <li><a class="header__menu-item" href="#">Features</a></li>
+              <li><a class="header__menu-item" href="#">Mega menu</a></li>
+              <li><a class="header__menu-item" href="#">Contact</a></li>
+            </ul>
+            <div class="nav navbar-nav navbar-right">
+              <form class="header__form navbar-left" role="search">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Search for...">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">
+                      <i class="fa fa-search"></i>
+                    </button>
+                  </span>
+                </div><!-- /input-group -->
+              </form>
+            </div> 
+          </div><!-- /.navbar-collapse -->
+          <i class="search fa fa-search"></i>
+      </div><!-- /.container-->
+    </nav>
+  </header>
+  <section class="menu-carousel">
+        <div id="carousel" class="carousel fade" data-ride="carousel">
+  
+          <!-- Indicators -->
+          <div class="carousel-indicators-wrap">
+            <ol class="carousel-indicators">
+              <li data-target="#carousel" data-slide-to="0" class="active"></li>
+              <li data-target="#carousel" data-slide-to="1"></li>
+              <li data-target="#carousel" data-slide-to="2"></li>
+              <li data-target="#carousel" data-slide-to="3"></li>
+              <li data-target="#carousel" data-slide-to="4"></li>
+            </ol>
+          </div><!-- /.carousel-indicators-wrap -->
+  
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner" role="listbox">
+            <div class="item active">
+              <!-- <img src="images/slider.jpg" alt=""> -->
+              <div class="bgslide" style="background-image: url(images/slider-1.jpg);"></div>
+              <div class="container">
+                <div class="carousel-caption">
+                  <h1>Made for designers</h1>
+                  <p>Create your online portfolio in minutes with the professionally and lovingly designed REEN website template. Customize your site with versatile and easy to use features.</p>
+                  <input type="button" class="btn-gray" data-toggle="modal" data-target=".bs-example-modal-sm" value="Get started now">
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <!-- <img src="images/slider.jpg" alt=""> -->
+              <div class="bgslide" style="background-image: url(images/slider-2.jpg);"></div>
+              <div class="container">
+                <div class="carousel-caption">
+                  <h1>Made for ingeneers</h1>
+                  <p>Create your online portfolio in minutes with the professionally and lovingly designed REEN website template. Customize your site with versatile and easy to use features.</p>
+                  <input type="button" class="btn-gray" data-toggle="modal" data-target=".bs-example-modal-sm" value="Get started now">
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <!-- <img src="images/slider.jpg" alt=""> -->
+              <div class="bgslide" style="background-image: url(images/slider-3.jpg);"></div>
+              <div class="container">
+                <div class="carousel-caption">
+                  <h1>Made for developers</h1>
+                  <p>Create your online portfolio in minutes with the professionally and lovingly designed REEN website template. Customize your site with versatile and easy to use features.</p>
+                  <input type="button" class="btn-gray" data-toggle="modal" data-target=".bs-example-modal-sm" value="Get started now">
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <!-- <img src="images/slider.jpg" alt=""> -->
+              <div class="bgslide" style="background-image: url(images/slider-1.jpg);"></div>
+              <div class="container">
+                <div class="carousel-caption">
+                  <h1>Made for sales</h1>
+                  <p>Create your online portfolio in minutes with the professionally and lovingly designed REEN website template. Customize your site with versatile and easy to use features.</p>
+                  <input type="button" class="btn-gray" data-toggle="modal" data-target=".bs-example-modal-sm" value="Get started now">
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <!-- <img src="images/slider.jpg" alt=""> -->
+              <div class="bgslide" style="background-image: url(images/slider-2.jpg);"></div>
+              <div class="container">
+                <div class="carousel-caption">
+                  <h1>Made for custumers</h1>
+                  <p>Create your online portfolio in minutes with the professionally and lovingly designed REEN website template. Customize your site with versatile and easy to use features.</p>
+                  <input type="button" class="btn-gray" data-toggle="modal" data-target=".bs-example-modal-sm" value="Get started now">
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Controls -->
+          <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
+            <span class="fa fa-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
+            <span class="fa fa-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </section>
+  <section class="features main-section">
+    <div class="container">
+      <h2 class="main-section__title">
+        Beautiful. Clean. Responsive.
+      </h2>
+      <p class="main-section__description">
+        REEN is a high-quality solution for those who want a beautiful website in no time. It's fully responsive and will adapt itself to any mobile device. iPad, iPhone, Android, it doesn't matter. Your content will always looks its absolute best.
+      </p>
+      <section class="features__list row">
+        <article class="features__item col-md-4 col-sm-6">
+          <div class="row">
+            <div class="col-sm-3">
+              <i class="features__icon fa fa-heart-o"></i>
+            </div>
+            <div class="col-sm-9">
+              <h3 class="features__item-title">Passion</h3>
+              <p class="features__item-description">
+                Magnis modipsae que lib voloratati andigen daepeditem quiate re porem aut labor. Laceaque quiae sitiorem rest non restibusaes maio es dem tumquam core posae volor remped modis volor.
+              </p>
+            </div>
+          </div>
+        </article>
+        <article class="features__item col-md-4 col-sm-6">
+          <div class="row">
+            <div class="col-sm-3">
+              <i class="features__icon fa fa-lightbulb-o"></i>
+            </div>
+            <div class="col-sm-9">
+              <h3 class="features__item-title">Creativity</h3>
+              <p class="features__item-description">
+                Magnis modipsae que lib voloratati andigen daepeditem quiate re porem aut labor. Laceaque quiae sitiorem rest non restibusaes maio es dem tumquam core posae volor remped modis volor.
+              </p>
+            </div>
+          </div>
+        </article>
+        <article class="features__item col-md-4 col-sm-6">
+          <div class="row">
+            <div class="col-sm-3">
+              <i class="features__icon fa fa-star-o"></i>
+            </div>
+            <div class="col-sm-9">
+              <h3 class="features__item-title">Quality</h3>
+              <p class="features__item-description">
+                Magnis modipsae que lib voloratati andigen daepeditem quiate re porem aut labor. Laceaque quiae sitiorem rest non restibusaes maio es dem tumquam core posae volor remped modis volor.
+              </p>
+            </div>
+          </div>
+        </article>
+      </section>
+    </div>
+  </section>
+  <section class="portfolio main-section">
+    <div class="container">
+      <h2 class="main-section__title">
+        Check out our latest works
+      </h2>
+      <p class="main-section__description">
+        Magnis modipsae que voloratati andigen daepeditem quiate re porem aut labor.
+      </p>
+      <div class="potfolio__slider">
+        <div class="row">
+          <div class="col-sm-6">
+            <a class="portfolio__item">
+              <div class="portfolio__item-image-wrapper">
+                <img src="images/portfolio-img-1.jpg" alt="some image" class="portfolio__item-image">
+                <div class="portfolio__item-mask">
+                  <i class="fa fa-plus"></i>
+                </div>
+              </div>
+              <h3 class="portfolio__item-title">
+                Grand Motel gets an identity brushup
+              </h3>
+              <p class="portfolio__item-description">
+                Identity
+              </p>
+            </a>
+          </div>
+          <div class="col-sm-6">
+            <a class="portfolio__item">
+              <div class="portfolio__item-image-wrapper">
+                <img src="images/portfolio-img-2.jpg" alt="some image" class="portfolio__item-image">
+                <div class="portfolio__item-mask">
+                  <i class="fa fa-plus"></i>
+                </div>
+              </div>            
+              <h3 class="portfolio__item-title">
+                Fresh branding for a creative startup
+              </h3>
+              <p class="portfolio__item-description">
+                Identity
+              </p>
+            </a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 col-sm-4 col-xs-6">
+            <div class="portfolio__preview">
+              <img src="images/preview-1.jpg" alt="preview" class="portfolio__thumbnail">
+              <div class="portfolio__preview-mask">
+                <h4 class="portfolio__preview-title">Astor &amp; Yancy</h4>
+                <p class="portfolio__preview-text">Identity</p>
+              </div>          
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-4 col-xs-6">
+            <div class="portfolio__preview">
+              <img src="images/preview-2.jpg" alt="preview" class="portfolio__thumbnail">
+              <div class="portfolio__preview-mask">
+                <h4 class="portfolio__preview-title">Astor &amp; Yancy</h4>
+                <p class="portfolio__preview-text">Identity</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-4 col-xs-6">
+            <div class="portfolio__preview">
+              <img src="images/preview-3.jpg" alt="preview" class="portfolio__thumbnail">
+              <div class="portfolio__preview-mask">
+                <h4 class="portfolio__preview-title">Astor &amp; Yancy</h4>
+                <p class="portfolio__preview-text">Identity</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-4 col-xs-6">
+            <div class="portfolio__preview">
+              <img src="images/preview-4.jpg" alt="preview" class="portfolio__thumbnail">
+              <div class="portfolio__preview-mask">
+                <h4 class="portfolio__preview-title">Astor &amp; Yancy</h4>
+                <p class="portfolio__preview-text">Identity</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ul class="portfolio__indicators">
+          <li class="portfolio__prev-next">
+            <a class="left portfolio__navigation-link">
+              <span class="fa fa-chevron-left" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+          </li>
+          <li class="portfolio__indicator"></li>
+          <li class="portfolio__indicator"></li>
+          <li class="portfolio__indicator"></li>
+          <li class="portfolio__indicator"></li>
+          <li class="portfolio__prev-next">
+            <a class="right portfolio__navigation-link">
+              <span class="fa fa-chevron-right" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>  
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="call-to-action main-section">
+    <div class="container">
+      <h2 class="main-section__title">
+        Want to work with us?
+      </h2>
+      <p class="main-section__description">
+        Magnis modipsae que voloratati andigen daepeditem quiate re porem aut labor. Laceaque quiae sitiorem rest non restibusaes maio es dem tumquam.
+      </p>
+      <button class="btn-gray" data-toggle="modal" data-target=".bs-example-modal-sm">Get in touch</button>
+    </div>
+  </section>
+  <footer class="footer">
+      <div class="footer__top">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3 footer__item">
+              <h3 class="footer__title">Who we are</h3>
+              <a href="#" class="footer__logo-link">
+                <img src="./images/logo-white.png" alt="" class="footer__logo">
+              </a>
+              <p class="footer__description">
+                Magnis modipsae voloratati andigen daepeditem quiate re porem que aut labor. Laceaque eictemperum quiae sitiorem rest non restibusaes maio es dem tumquam.
+              </p>
+              <a href="#" class="footer__details">
+                <span>More about us</span>
+                <i class="fa fa-arrow-right"></i>
+              </a>
+            </div>
+            <div class="col-md-3 footer__item">
+              <h3 class="footer__title">Latest works</h3>
+              <div class="footer__portfolio my-row">
+                <a class="footer__portfolio-item my-col">
+                  <span class="footer__portfolio-image-wrapper">
+                    <span class="footer__portfolio-image" style="background-image: url(images/works-1.jpg);"></span>
+                    <span class="footer__portfolio-mask">
+                      <i class="fa fa-plus"></i>
+                    </span>
+                  </span>
+                </a>
+                <a class="footer__portfolio-item my-col">
+                  <span class="footer__portfolio-image-wrapper">
+                    <span class="footer__portfolio-image" style="background-image: url(images/works-2.jpg);"></span>
+                    <span class="footer__portfolio-mask">
+                      <i class="fa fa-plus"></i>
+                    </span>
+                  </span>
+                </a>
+                <a class="footer__portfolio-item my-col">
+                  <span class="footer__portfolio-image-wrapper">
+                    <span class="footer__portfolio-image" style="background-image: url(images/works-3.jpg);"></span>
+                    <span class="footer__portfolio-mask">
+                      <i class="fa fa-plus"></i>
+                    </span>
+                  </span>
+                </a>
+                <a class="footer__portfolio-item my-col">
+                  <span class="footer__portfolio-image-wrapper">
+                    <span class="footer__portfolio-image" style="background-image: url(images/works-4.jpg);"></span>
+                    <span class="footer__portfolio-mask">
+                      <i class="fa fa-plus"></i>
+                    </span>
+                  </span>
+                </a>
+                <!-- <a class="footer__portfolio-item">
+                  <span class="footer__portfolio-image" style="background-image: url(images/works-1.jpg);"></span>
+                  <span class="footer__portfolio-mask">
+                    <i class="fa fa-plus"></i>
+                  </span>
+                </a>
+                <a class="footer__portfolio-item">
+                  <span class="footer__portfolio-image" style="background-image: url(images/works-1.jpg);"></span>
+                  <span class="footer__portfolio-mask">
+                    <i class="fa fa-plus"></i>
+                  </span>
+                </a>
+                <a class="footer__portfolio-item">
+                  <span class="footer__portfolio-image" style="background-image: url(images/works-1.jpg);"></span>
+                  <span class="footer__portfolio-mask">
+                    <i class="fa fa-plus"></i>
+                  </span>
+                </a> -->
+              </div>
+              <!-- <ul class="footer__portfolio row">
+                <li class="footer__portfolio-item col-xs-6">
+                  <a href="#" class="footer__portfolio-link">
+                    <img src="./images/works-1.jpg" alt="some data" class="footer__portfolio-img">
+                  </a>
+                </li>
+                <li class="footer__portfolio-item col-xs-6">
+                  <a href="#" class="footer__portfolio-link">
+                    <img src="./images/works-2.jpg" alt="some data" class="footer__portfolio-img">
+                  </a>
+                </li>
+                <li class="footer__portfolio-item col-xs-6">
+                  <a href="#" class="footer__portfolio-link">
+                    <img src="./images/works-3.jpg" alt="some data" class="footer__portfolio-img">
+                  </a>
+                </li>
+                <li class="footer__portfolio-item col-xs-6">
+                  <a href="#" class="footer__portfolio-link">
+                    <img src="./images/works-4.jpg" alt="some data" class="footer__portfolio-img">
+                  </a>
+                </li>
+              </ul> -->
+            </div>
+            <div class="col-md-3 footer__item">
+              <h3 class="footer__title">Get in touch</h3>
+              <p class="footer__description">
+                Doloreiur quia commolu ptatemp dolupta oreprerum tibusam eumenis et consent accullignis dentibea autem inisita.
+              </p>
+              <ul class="footer__contacts">
+                <li class="footer__contacts-item">
+                  <a href="#" class="footer__contacts-link">
+                    <i class="fa fa-map-marker"></i>
+                    <span>84 Street, City, State 24813</span>
+                  </a>
+                </li>
+                <li class="footer__contacts-item">
+                  <a href="tel:+001234567890" class="footer__contacts-link">
+                    <i class="fa fa-mobile-phone"></i>
+                    <span>+00 (123) 456 78 90</span>
+                  </a>
+                </li>
+                <li class="footer__contacts-item">
+                  <a href="mailto:info@reen.com" class="footer__contacts-link">
+                    <i class="fa fa-envelope-o"></i>
+                    <span>info@reen.com</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-3 footer__item">
+              <h3 class="footer__title">Free updates</h3>
+              <p class="footer__description">
+                Conecus iure posae volor remped modis aut lor volor accabora incim resto explabo.
+              </p>
+              <form class="footer__form form-inline" role="search">
+                <div class="footer__form-group form-group">
+                  <input type="email" name="email" class="footer__form-control" placeholder="Enter your email address">
+                  <button type="submit" class="btn-gray">Subscribe</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <div class="container">
+          <p class="footer__copyright">
+            © 2014 REEN. All rights reserved.
+          </p>
+          <ul class="footer__nav">
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">
+                Home
+              </a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">
+                Portfolio
+              </a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">
+                Blog
+              </a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">
+                About
+              </a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">
+                Services
+              </a>
+            </li>
+            <li class="footer__nav-item">
+              <a href="#" class="footer__nav-link">
+                Contact
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+  </footer>
+  <!-- <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        ...
+      </div>
+    </div>
+  </div> -->
+  <div class="modal fade bs-example-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="mySmallModalLabel">Modal title</h4>
+        </div>
+        <div class="modal-body">
+          Modal body
+          <form class="form-inline">
+            <div class="form-group">
+              <label class="sr-only" for="exampleInputEmail3">Email address</label>
+              <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email">
+            </div>
+            <div class="form-group">
+              <label class="sr-only" for="exampleInputPassword3">Password</label>
+              <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Password">
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox"> Remember me
+              </label>
+            </div>
+            <button type="submit" class="btn btn-default">Sign in</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          Modal footer
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="js/main.js"></script>
+</body>
+</html>

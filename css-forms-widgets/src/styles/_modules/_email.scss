@@ -1,0 +1,119 @@
+.email {
+  margin: 10px auto;
+  width: 380px;
+  background-color: #fff;
+  box-shadow: 0px 0px 8px 0px rgba( 0, 0, 0, .45 );
+  border-radius:4px;
+  overflow: hidden;
+  padding: 25px;
+  &__form {
+    &-control {
+      background-color: #f4f4f4;
+      border-radius: 1px;
+      box-shadow: 0px -.5px 0px .5px rgba( 0, 0, 0, .25 );
+      position: relative;
+      margin-bottom: 25px;
+      min-height:45px;
+    }
+  }
+  &__customer {
+    padding:11px 20px 12px 10px;
+    background-color: #404a58;
+    border:3px solid transparent;
+    background-clip: padding-box;
+    margin-left:5px;
+    color: #fff;
+    width: 193px;
+    font-family: GothamSSm-Light;
+    font-size: 14px;
+    position: relative;
+    &-close {
+      position: absolute;
+      right: 10px;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      cursor:pointer;
+    }
+  }
+  &__add-customer {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 10px;
+    margin: auto;
+    cursor: pointer;
+  }
+  &__text-input {
+    @include placecolor(#999999);
+    font-size: 14px;
+    font-family: GothamSSm-Book;
+    border:none;
+    background-color: transparent;
+    padding: 15px;
+    width: 100%;
+    outline: none;
+  }
+  input.email__text-input {
+    padding: 15px 35px 15px 15px;
+  }
+  textarea.email__text-input {
+    resize:none;
+  }
+  &__file {
+    &-upload {
+      position: absolute;
+      width: 21px;
+      height: 19px;
+      overflow: hidden;
+      right:10px;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+    }
+    &-icon {
+      position: absolute;
+      top:0;
+      bottom:0;
+      left:0;
+      right:0;
+      margin: auto;
+    }
+    &-label{
+      display:inline-block;
+      width:100%;
+      height:100%;
+    }
+    &-input {
+      position: absolute;
+      top:0;
+      bottom:0;
+      margin: auto;
+      opacity:0;
+      width: 100%;
+      font-size: 0;
+      cursor: pointer;
+      &:focus {
+        &+.email__file-label {
+          border:1px solid #4D90FE;
+          -webkit-box-shadow: 0px 0px 5px  #4D90FE;
+          box-shadow: 0px 0px 5px  #4D90FE;
+        }
+      }
+    }
+  }
+  &__submit {
+    text-transform: uppercase;
+    color: #fff;
+    font-family: GothamSSm-Book;
+    letter-spacing:.6px;
+    font-size: 15px;
+    width: 125px;
+    padding: 16px;
+    border-radius: 3px;
+    background-color: #fb6362;
+    border: none;
+    box-shadow: 1px 2px 1px 0px rgba( 0, 0, 0, .45 );
+    cursor: pointer;
+  }
+}

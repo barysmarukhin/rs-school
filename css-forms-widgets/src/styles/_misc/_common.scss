@@ -1,0 +1,152 @@
+/*----common styles----*/ 
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+ul li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+.pull-left {
+  float: left;
+}
+.pull-right {
+  float: right;
+}
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
+.inline-block-item {
+  display: inline-block;
+  vertical-align: middle;
+}
+.wcag-hidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    left:-9999px;
+}
+@font-face {
+    font-family: GothamSSm-Book; 
+    src: url("../fonts/gotham/GothamSSm-Book.ttf"); 
+}
+
+@font-face {
+    font-family: GothamSSm-Light; 
+    src: url("../fonts/gotham/GothamSSm-Light.ttf"); 
+}
+
+@font-face {
+    font-family: GothamSSm-Medium; 
+    src: url("../fonts/gotham/GothamSSm-Medium.ttf"); 
+}      
+.sprite {
+    background-image: url(../images/spritesheet.png);
+    background-repeat: no-repeat;
+    // display: block;
+}
+
+.sprite-arrow-left-icon {
+    width: 8px;
+    height: 12px;
+    background-position: -5px -5px;
+}
+
+.sprite-arrow-right-icon {
+    width: 8px;
+    height: 12px;
+    background-position: -23px -5px;
+}
+
+.sprite-booking-marker-icon {
+    width: 12px;
+    height: 17px;
+    background-position: -41px -5px;
+}
+
+.sprite-calendar-icon {
+    width: 16px;
+    height: 16px;
+    background-position: -63px -5px;
+}
+
+.sprite-checkbox-icon {
+    width: 16px;
+    height: 11px;
+    background-position: -89px -5px;
+}
+
+.sprite-close-icon {
+    width: 8px;
+    height: 8px;
+    background-position: -115px -5px;
+}
+
+.sprite-comments-icon {
+    width: 25px;
+    height: 21px;
+    background-position: -133px -5px;
+}
+
+.sprite-destination-marker-icon {
+    width: 18px;
+    height: 26px;
+    background-position: -168px -5px;
+}
+
+.sprite-dropdown-icon {
+    width: 10px;
+    height: 7px;
+    background-position: -196px -5px;
+}
+
+.sprite-email-add-icon {
+    width: 16px;
+    height: 16px;
+    background-position: -216px -5px;
+}
+
+.sprite-eye-icon {
+    width: 27px;
+    height: 17px;
+    background-position: -242px -5px;
+}
+
+.sprite-file-add-icon {
+    width: 21px;
+    height: 19px;
+    background-position: -279px -5px;
+}
+
+.sprite-likes-icon {
+    width: 25px;
+    height: 22px;
+    background-position: -310px -5px;
+}
+
+.sprite-search-icon {
+    width: 22px;
+    height: 22px;
+    background-position: -345px -5px;
+}
+
+.sprite-star-icon {
+    width: 21px;
+    height: 20px;
+    background-position: -377px -5px;
+}

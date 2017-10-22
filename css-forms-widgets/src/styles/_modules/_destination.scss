@@ -1,0 +1,116 @@
+.destination {
+  width: 795px;
+  margin: 10px auto;
+  height: 339px;
+  box-shadow: 0px 0px 8px 0px rgba( 0, 0, 0, .45 );
+  border-radius:4px;
+  overflow: hidden;
+  &__view {
+    float: left;
+    width: 70px;
+    border-radius: 3px;
+    &-item {
+      height: 113px;
+      position: relative;
+      background-color: #404a58;
+      cursor: pointer;
+      transition: all .3s ease-in;
+      border-bottom: 1px solid #242931;
+      &.active{
+        background-color: #fb6362;
+        &:after {
+          content:'';
+          position: absolute;
+          top: 50%;
+          margin-top: -30px;
+          right:-380px;
+          border-left: 30px solid #fff;
+          border-top: 30px solid transparent;
+          border-bottom: 30px solid transparent;
+          cursor: default;
+          z-index:10;
+        }
+      }
+      &:last-child {
+        border-bottom: none;
+      }
+      &:hover {
+        background-color: #fb6362;
+      }
+      i {
+        position: absolute;
+        @include absolute-center;
+      }
+    }
+  }
+  &__main-area{
+    float:left;
+    height:100%;
+  }
+  &__content {
+    background-color: #FFF;
+    padding: 30px 25px 70px 35px;
+    height: 100%;
+    width:355px;
+    float: left;
+    &-title {
+      font-size: 20px;
+      line-height: 1.3;
+      width:200px;
+      margin-bottom: 15px;
+    }
+    &-reviews {
+      margin-bottom: 30px;
+      font-family: GothamSSm-Light;
+      font-size: 14px;
+      color: #4d4d4d;
+      cursor: pointer;
+    }
+    &-text {
+      font-family: GothamSSm-Light;
+      font-size: 14px;
+      color: #999999;
+      line-height: 1.8;
+      margin-bottom: 10px;
+    }
+    &-read-more {
+      font-family: GothamSSm-Light;
+      font-size: 14px;
+      color:#fb6362;
+      transition: opacity .5s ease-in;
+      &:hover {
+        color: rgba(0,0,0, .6);
+      }
+    }
+  }
+  &__photo {
+    float: left;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    width: 370px;
+    &-img {
+      position: relative;
+      bottom: 20px;
+      width:100%;
+      height:auto;
+    }
+  }
+  &__details-wrapper {
+    position: absolute;
+    bottom: 20px;
+    right: 30px;
+    width: 160px;
+  }
+  &__details {
+    font-size: 0;
+    i {
+      margin-right: 10px;
+      cursor: pointer;
+    }
+    span {
+      font-size: 17px;
+      color: #fff;
+    }
+  }
+}

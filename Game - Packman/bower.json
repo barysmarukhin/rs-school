@@ -1,0 +1,6 @@
+{
+  "name": "pac-man",
+  "dependencies": {
+    "mousetrap": "~1.5.2"
+  }
+}

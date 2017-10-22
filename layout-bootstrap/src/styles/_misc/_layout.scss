@@ -1,0 +1,23 @@
+/*------layout styles------*/
+html{
+  font-size: 100.01%;
+  height: 100%;
+  width:  100%;
+}
+
+body{
+  font-size: 15px;
+  position: relative;
+  min-height:100%;
+  @include source-sans();
+}
+// .content-wrapper {
+//   padding-bottom: $footer-height;
+// }
+// .footer {
+//   position: absolute;
+//   left: 0;
+//   right:0;
+//   bottom: 0;
+//   height: $footer-height;
+// }

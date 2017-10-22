@@ -1,0 +1,112 @@
+.graph {
+  margin: 10px auto;
+  width: 795px;
+  box-shadow: 0px 0px 8px 0px rgba( 0, 0, 0, .45 );
+  border-radius:4px;
+  overflow: hidden;
+  padding: 50px 45px 0;
+  background-color: #FFF;
+  position: relative;
+  &__scale {
+    &-item {
+      color: #666666;
+      font-family: GothamSSm-Medium;
+      font-size: 12px;
+      margin-bottom: 51px;
+      line-height: 1.5;
+      border-bottom: 1px solid #eaeaea;
+    }
+  }
+  &__values {
+    position: relative;
+    bottom:40px;
+    color: #666666;
+    // text-align: center;
+    font-size: 0;
+    margin-left:63px;
+    &-item {
+      text-align: center;
+      font-family: GothamSSm-Medium;
+      font-size: 12px;
+      margin-right: 35px;
+      width:55px;
+      position: relative;
+      &:nth-child(1) .graph__values-diagram {
+        height: 50px;
+      }
+      &:nth-child(2) .graph__values-diagram {
+        height: 60px;
+      }
+      &:nth-child(3) .graph__values-diagram {
+        height: 120px;
+      }
+      &:nth-child(4) .graph__values-diagram {
+        height: 155px;
+      }
+      &:nth-child(5) .graph__values-diagram {
+        height: 130px;
+      }
+      &:nth-child(6) .graph__values-diagram {
+        height: 170px;
+      }
+      &:nth-child(7) .graph__values-diagram {
+        height: 145px;
+      }
+    }
+    &-diagram {
+      background-color: #fb6362;
+      position: absolute;
+      bottom: 25px;
+      left:0;
+      right: 0;
+      border-radius: 3px;
+      animation: 2s anim-lightspeed-in ease forwards;
+      &:focus {
+        .graph__values-tooltip {
+          visibility:visible;
+          opacity:1;
+        }
+      }
+      &:hover .graph__values-tooltip {
+        opacity: 1;
+        visibility:visible;
+      }
+    }
+    &-tooltip {
+      visibility:hidden;
+      opacity: 0;
+      transition: opacity .5s ease-in;
+      position: absolute;
+      line-height: 30px;
+      height:30px;
+      color:#fff;
+      top: -45px;
+      left:0;
+      right:0;
+      background-color: #404a58;
+      margin: auto;
+      border-radius:4px;
+      &:after {
+        content:'';
+        position: absolute;
+        bottom:-8px;
+        left:50%;
+        margin-left: -7px;
+        border-top: 8px solid #404a58;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+      }
+    }
+  }
+}
+//keyframes
+@keyframes anim-lightspeed-in {
+  0% { 
+    height: 0;
+    opacity: .3; 
+  }
+  100% { 
+    height: -100%;
+    opacity: 1; 
+  }
+}

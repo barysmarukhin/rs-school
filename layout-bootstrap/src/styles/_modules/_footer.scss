@@ -1,0 +1,204 @@
+.footer {
+  &__top {
+    background-color: $footer-top-bg;
+    padding: 50px 0 50px;
+  }
+  &__item {
+    margin-bottom: 20px;
+  }
+  &__title {
+    color: #fff;
+    @include lato();
+    text-transform: uppercase;
+    font-size: 17px;
+    margin-bottom: 20px;
+  }
+  &__logo-link {
+    display: inline-block;
+  }
+  &__logo {
+    margin-bottom: 30px;
+    transition: all .3s ease-in;
+    cursor: pointer;
+    &:hover {
+      opacity: .8;
+    }
+  }
+  &__description {
+    color: $gallery-footer-text-color;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  &__details {
+    &:hover {
+      text-decoration: none;
+      span, i {
+        color: #00bc9c;
+      }
+      span {
+        margin-right: 15px;
+      }
+    }
+    span {
+      @include source-sans(bold);
+      transition: all .3s ease-in;
+      color: $gallery-footer-text-color;
+      margin-right: 10px;
+    }
+    i {
+      color: $gallery-footer-text-color;
+      font-size: 12px;
+    }
+  }
+  &__portfolio {
+    &.my-row{
+      @include clearfix();
+      margin-right: -3px;
+      margin-left: -3px;
+      .my-col {
+        padding-right: 3px;
+        padding-left: 3px;
+        width: 50%;
+        max-width: 125px;
+        position: relative;
+        min-height: 1px;
+        float: left;
+      }
+    }
+    &-item {
+      display:inline-block;
+      text-align:center;
+      cursor: pointer;
+      margin-bottom: 6px;
+    }
+    &-image-wrapper {
+      position: relative;
+      display: block;
+      min-height: 85px;
+      &:hover {
+        .footer__portfolio-mask {
+          opacity: 1;
+          background-color: rgba(9,183,155, .9);
+        }
+      }
+    }
+    &-image {
+      background-size: cover;
+      background-position: center center; 
+      position: absolute;
+      left: 0;  
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
+    &-mask {
+      @include absolute-center;
+      opacity: 0;
+      transition: all .3s ease-in;
+      background-color: rgba(9,183,155, 0);
+      color: #fff;
+      i {
+        position: absolute;
+        top:50%;
+        font-size: 18px;
+        margin-top: -9px;
+        margin-left: -9px;
+      }
+    }
+  }
+  &__contacts {
+    &-link {
+      color: $gallery-footer-text-color;
+      transition: all .3s ease-in;
+      &:hover {
+        color: $button-gray;
+        text-decoration: none;
+      }
+      i {
+        text-align: center;
+        margin-right: 10px;
+        width: 10px;
+        @inlude inline-block(middle);
+        font-size: 15px;
+      }
+      i.fa-envelope-o {
+        font-size: 10px;
+      }
+      span {
+        font-size: 14px;
+      }
+    }
+  }
+  &__form {
+    background-color: $email-subscribe-bg;
+    border-radius: 3px;
+    padding: 7px 10px;
+    width: 260px;
+    max-height:48px;
+    &:hover {
+      background-color: $email-subscribe-bg-hover;
+    }
+    &-group {
+      margin-bottom: 0;
+    }
+    &-control {
+      color: #fff;
+      width: 150px;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      @include source-sans();
+      font-size: 13px;
+      @include placecolor(#76838f);
+    }
+    .btn-gray {
+      font-size: 13px;
+      padding: 5px 10px;
+    }
+  }
+  &__bottom {
+    padding: 30px 0;
+    font-size: 14px;
+    background-color: $footer-bottom-bg;
+    color: $gallery-footer-text-color;
+  }
+  &__copyright {
+    float: left;
+    margin-right: 30px;
+  }
+  &__nav {
+    font-size: 0;
+    float: right;
+    @include tablets {
+      float: left;
+    }
+    &-item {
+      @include inlineblock(middle);
+      &:after {
+        content: '·';
+        display: inline-block;
+        font-size: 14px;
+        margin: 0 10px;
+      }
+      &:last-child {
+        &:after {
+          display:none;
+        }
+      }
+    }
+    &-link {
+      color: $gallery-footer-text-color;
+      font-size: 14px;
+      &:hover {
+        color: #00bc9c;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+// @include tablets {
+//   .footer__portfolio-item {
+//     max-width: 150px;
+//   }
+// }

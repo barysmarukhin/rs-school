@@ -1,0 +1,208 @@
+.booking {
+  width: 347px;
+  box-shadow: 0px 0px 8px 0px rgba( 0, 0, 0, .45 );
+  margin: 10px auto;
+  border-radius:4px;
+  overflow: hidden;
+  &__header {
+    position: relative;
+    overflow: hidden;
+    font-size: 0;
+    &-image {
+      position: relative;
+      left:-20px;
+    }
+    &-title {
+      position: absolute;
+      bottom: 40px;
+      font-family: GothamSSm-Light;
+      left: 25px;
+      color: #fff;
+      font-size: 25px;
+    }
+    &-detail {
+      position: absolute;
+      bottom: 20px;
+      left: 45px;
+      color: #fff;
+      font-size: 0;
+      i {
+        position: absolute;
+        left: -18px;
+      }
+      span {
+        font-size: 14px;
+      }
+    }
+  }//.booking__header
+  &__form {
+    background-color: #FFF;
+    padding: 25px 27px;
+    &-control {
+      margin-bottom: 20px;
+      position: relative;
+      font-size: 0;
+    }
+  }//.booking__form
+  &__label {
+    font-family: GothamSSm-Book;
+    font-weight: bold;
+    font-size: 14px;
+    color: #666666;
+    cursor: pointer;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+  &__input-wrapper {
+    background-color: #f4f4f4;
+    border-radius: 2px;
+    box-shadow: 0px -.5px 0px .5px rgba( 0, 0, 0, .25 );
+    position: relative;
+  }
+  &__text-input {
+    width: 80%;
+    padding: 13px 15px 15px;
+    border:none;
+    background-color: transparent;
+    @include placecolor(#999999);
+    font-size: 14px;
+    font-family: GothamSSm-Light;
+  }
+  &__button-calendar {
+    position: absolute;
+    border-radius: 2px;
+    background-color: rgb( 65, 75, 89 );
+    width: 38px;
+    height: 38px;
+    border: none;
+    right: 3px;
+    top: 2px;
+    cursor: pointer;
+  }
+  &__native-checkbox {
+    position: absolute;
+    top: 0;
+    left: -9999px;
+  }
+  &__native-checkbox:checked {
+    &+.booking__checkbox-label .booking__checkbox-icon:before {
+      opacity: 1;
+    }
+  }
+  &__native-checkbox:focus {
+    &+.booking__checkbox-label .booking__checkbox-icon {
+      border:1px solid #4D90FE;
+      -webkit-box-shadow: 0px 0px 5px  #4D90FE;
+      box-shadow: 0px 0px 5px  #4D90FE;
+    }
+  }
+  &__checkbox-label {
+    font-family: GothamSSm-Book;
+    font-weight: bold;
+    color: #666666;
+    cursor: pointer;
+    position: relative;
+    font-size: 0;
+    top: -5px;
+    .booking__checkbox-icon {
+      position: relative;
+      margin-right: 15px;
+      border-radius: 2px;
+      background-color: rgb( 244, 244, 244 );
+      width: 20px;
+      height: 20px;
+      box-shadow: 0px -.5px 0px .5px rgba( 0, 0, 0, .25 );
+      &:before {
+        content:'';
+        background-image: url(../images/spritesheet.png);
+        background-repeat: no-repeat;
+        background-position: -89px -5px;
+        position: absolute;
+        width:16px;
+        height: 11px;
+        top:0;
+        left:0;
+        right:0;
+        bottom:0;
+        margin: auto;
+        opacity:0;
+        transition: opacity .3s ease-in;
+      }
+    }
+    span {
+      font-size: 14px;
+    }
+  }
+  &__form-group {
+    font-size: 0;
+    .booking__form-control {
+      width:137px;
+    }
+    .booking__text-input {
+      @include placecolor(#414b59);
+      font-family: GothamSSm-Light;
+      font-size: 16px;
+      font-weight: bold;
+    }
+  }
+  &__select {
+    &:hover {
+      .booking__select-list{
+        visibility: visible;
+      }
+    }
+    &-button {
+      position: absolute;
+      border-radius: 2px;
+      background-color: rgb( 65, 75, 89 );
+      width: 38px;
+      height: 38px;
+      border: none;
+      right: 3px;
+      top: 2px;
+      cursor: pointer;
+      &:focus {
+        &+.booking__select-list{
+          visibility: visible;
+        }
+      }
+    }
+    &-list {
+      visibility:hidden;
+      width: 38px;
+      position: absolute;
+      right: 3px;
+      top: 40px;
+      text-align: center;
+    }
+    &-item {
+      width: 100%;
+      height: 20px;
+      font-size: 14px;
+      background-color: #f4f4f4;
+      cursor:pointer;
+      color:#414b59;
+      &:hover {
+        background-color: #ccc;
+      }
+    }
+  }
+  &__submit {
+    text-transform: uppercase;
+    color: #fff;
+    font-family: GothamSSm-Book;
+    letter-spacing:.6px;
+    font-size: 15px;
+    width: 100%;
+    padding: 18px;
+    border-radius: 3px;
+    background-color: #fb6362;
+    margin-top: 20px;
+    border: none;
+    box-shadow: 1px 2px 1px 0px rgba( 0, 0, 0, .45 );
+    cursor: pointer;
+  }
+}
+.input-wrapper {
+  position: relative;
+}

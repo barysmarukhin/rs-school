@@ -1,0 +1,73 @@
+/*----common styles----*/ 
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+ul li {
+  list-style: none;
+}
+.main-section {
+  padding:120px 0;
+  text-align: center;
+  &__title {
+    @include lato();
+    font-size: 48px;
+    margin-bottom:30px;
+    color: $title-menu-color;
+  }
+  &__description{
+    @include source-sans();
+    color: $section-text-color;
+    font-size: 22px;
+    max-width:750px;
+    margin: 0 auto 75px auto;
+  }
+}
+.btn-gray{
+  background: $button-gray;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 24px;
+  text-transform: uppercase;
+  @include source-sans(bold);
+  font-size: 18px;
+  text-decoration: none;
+  border: none;
+  outline: none;
+}
+.btn-gray:hover{
+  background: $button-gray-hover;
+  color: #fff;
+  text-decoration: none;
+}
+// .container {
+//   width: $container-width;
+//   margin: 0 auto;
+//   padding: 0 55px;
+//   @include clearfix;
+// }
+// a {
+//   text-decoration: none;
+// }
+// .mb-45 {
+//   margin-bottom: 45px;
+// }
+// .mb-30 {
+//   margin-bottom: 30px;
+// }
+// .pull-bottom {
+//   position: absolute;
+//   bottom: 0;
+//   left: 0;
+//   right: 0;
+// }
+// .pull-top {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+// }

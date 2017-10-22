@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>css-forms-widgets</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+  <section aria-label="Calendar Widget. For switching to next widget use 'D' button" class="calendar">
+    <header class="calendar__header clearfix">
+      <i tabindex="0" role="button" aria-label="prev" class="sprite sprite-arrow-left-icon"></i>
+      <h2 class="inline-block-item calendar__header-title">May 2014</h2>
+      <i tabindex="0" role="button" aria-label="next" class="sprite sprite-arrow-right-icon"></i>
+    </header>
+    <div class="calendar__content">
+      <table class="calendar__table">
+        <thead class="calendar__table-header">
+          <tr class="calendar__table-row">
+            <th class="calendar__table-title">Sun<span class="wcag-hidden">day</span></th>
+            <th class="calendar__table-title">Mon<span class="wcag-hidden">day</span></th>
+            <th class="calendar__table-title">Tue<span class="wcag-hidden">sday</span></th>
+            <th class="calendar__table-title">Wed<span class="wcag-hidden">nesday</span></th>
+            <th class="calendar__table-title">Thu<span class="wcag-hidden">rsday</span></th>
+            <th class="calendar__table-title">Fri<span class="wcag-hidden">day</span></th>
+            <th class="calendar__table-title">Sat<span class="wcag-hidden">urday</span></th>
+          </tr>
+        </thead>
+        <tbody class="calendar__table-body">
+          <tr class="calendar__table-row">
+            <td tabindex="0" class="calendar__table-day calendar__table-day--different-month">29</td>
+            <td tabindex="0" class="calendar__table-day calendar__table-day--different-month">30</td>
+            <td tabindex="0" class="calendar__table-day">1</td>
+            <td tabindex="0" class="calendar__table-day">2</td>
+            <td tabindex="0" class="calendar__table-day calendar__table-day--current">3</td>
+            <td tabindex="0" class="calendar__table-day">4</td>
+            <td tabindex="0" class="calendar__table-day">5</td>
+          </tr>
+          <tr class="calendar__table-row">
+            <td tabindex="0" class="calendar__table-day">6</td>
+            <td tabindex="0" class="calendar__table-day calendar__table-day--evented">7</td>
+            <td tabindex="0" class="calendar__table-day">8</td>
+            <td tabindex="0" class="calendar__table-day">9</td>
+            <td tabindex="0" class="calendar__table-day">10</td>
+            <td tabindex="0" class="calendar__table-day">11</td>
+            <td tabindex="0" class="calendar__table-day">12</td>
+          </tr>
+          <tr class="calendar__table-row">
+            <td tabindex="0" class="calendar__table-day">13</td>
+            <td tabindex="0" class="calendar__table-day">14</td>
+            <td tabindex="0" class="calendar__table-day">15</td>
+            <td tabindex="0" class="calendar__table-day">16</td>
+            <td tabindex="0" class="calendar__table-day">17</td>
+            <td tabindex="0" class="calendar__table-day">18</td>
+            <td tabindex="0" class="calendar__table-day">19</td>
+          </tr>
+          <tr class="calendar__table-row">
+            <td tabindex="0" class="calendar__table-day">20</td>
+            <td tabindex="0" class="calendar__table-day">21</td>
+            <td tabindex="0" class="calendar__table-day">22</td>
+            <td tabindex="0" class="calendar__table-day calendar__table-day--evented">23</td>
+            <td tabindex="0" class="calendar__table-day">24</td>
+            <td tabindex="0" class="calendar__table-day">25</td>
+            <td tabindex="0" class="calendar__table-day">26</td>
+          </tr>
+          <tr class="calendar__table-row">
+            <td tabindex="0" class="calendar__table-day">27</td>
+            <td tabindex="0" class="calendar__table-day">28</td>
+            <td tabindex="0" class="calendar__table-day">29</td>
+            <td tabindex="0" class="calendar__table-day">30</td>
+            <td tabindex="0" class="calendar__table-day calendar__table-day--different-month">1</td>
+            <td tabindex="0" class="calendar__table-day calendar__table-day--different-month">2</td>
+            <td tabindex="0" class="calendar__table-day calendar__table-day--different-month">3</td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="calendar__add-button">Add Event</button>
+    </div>
+  </section>
+  <section aria-label="Booking Widget. For switching to next widget use 'D' button" class="booking">
+    <header class="booking__header">
+      <img tabindex="0" class="booking__header-image" src="./images/hotel-relais.jpg" alt="hotel relais">
+      <h2 class="booking__header-title">Hotel Relais</h2>
+      <div class="booking__header-detail">
+        <i class="sprite sprite-booking-marker-icon"></i>
+        <span>Paris, France</span>
+      </div>
+    </header>
+    <form action="" class="booking__form">
+      <div class="booking__form-control">
+        <label class="booking__label" for="check-in">Check in</label>
+        <div class="booking__input-wrapper">
+          <input class="booking__text-input" name="check-in" id="check-in" type="text" placeholder="9 July, 2016" disabled="true">
+          <button class="booking__button-calendar">
+            <i aria-label="Check in" class="inline-block-item sprite sprite-calendar-icon"></i>
+          </button>
+        </div>
+      </div>
+      <div class="booking__form-control">
+        <label class="booking__label" for="check-out">Check out</label>
+        <div class="booking__input-wrapper">
+          <input class="booking__text-input" id="check-out" type="text" placeholder="16 July, 2016" disabled="true">
+          <button class="booking__button-calendar">
+            <i aria-label="Check out" class="inline-block-item sprite sprite-calendar-icon"></i>
+          </button> 
+        </div>
+      </div>
+      <div class="booking__form-control">
+        <input class="booking__native-checkbox" type="checkbox" id="flexible-dates">
+        <label class="inline-block-item booking__checkbox-label" for="flexible-dates">
+          <i class="inline-block-item booking__checkbox-icon"></i>
+          <span class="inline-block-item">Flexible dates</span>
+        </label>
+      </div>
+      <div class="booking__form-group clearfix">
+        <div class="booking__form-control pull-left">
+          <label class="booking__label" for="adults">Adults</label>
+          <div class="booking__input-wrapper">
+            <input class="booking__text-input" id="adults" type="text" value="2" disabled="true">
+            <div class="booking__select">
+              <button aria-label="choose adults" id="chooseAdultsCount" class="booking__select-button">
+                <i class="sprite sprite-dropdown-icon inline-block-item"></i>
+              </button>
+              <ul role="listbox" aria-activedescendant="adultsBox1-2" aria-labelledby="chooseAdultsCount" aria-expanded="false" class="booking__select-list">
+                <li role="option" id="adultsBox1-1" class="booking__select-item">1</li>
+                <li role="option" id="adultsBox1-2" class="booking__select-item">2</li>
+                <li role="option" id="adultsBox1-3" class="booking__select-item">3</li>
+                <li role="option" id="adultsBox1-4" class="booking__select-item">4</li>
+                <li role="option" id="adultsBox1-5" class="booking__select-item">5</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="booking__form-control pull-right">
+          <label class="booking__label" for="children">Children</label>
+          <div class="booking__input-wrapper">
+            <input class="booking__text-input" id="children" type="text" value="1" disabled="true">
+            <div class="booking__select">
+              <button aria-label="choose children" id="chooseChildrenCount" class="booking__select-button">
+                <i class="sprite sprite-dropdown-icon inline-block-item"></i>
+              </button>
+              <ul role="listbox" aria-activedescendant="childrenBox1-1" class="booking__select-list" aria-labelledby="chooseChildrenCount">
+                <li role="option" id="childrenBox1-1" class="booking__select-item">1</li>
+                <li role="option" id="childrenBox1-2" class="booking__select-item">2</li>
+                <li role="option" id="childrenBox1-3" class="booking__select-item">3</li>
+                <li role="option" id="childrenBox1-4" class="booking__select-item">4</li>
+                <li role="option" id="childrenBox1-5" class="booking__select-item">5</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="booking__submit" type="submit">
+          <i class="inline-block-item sprite sprite-search-icon"></i>
+          <span>search rooms</span>
+      </button>
+    </form>
+  </section>
+  <section aria-label="Destination Widget. For switching to next widget use 'D' button" class="destination clearfix">
+    <ul class="destination__view">
+      <li tabindex="0" aria-label="My most favourite place in the world" class="destination__view-item active">
+        <i class="sprite sprite-eye-icon inline-block-item"></i>
+      </li>
+      <li tabindex="0" aria-label="Marked places" class="destination__view-item">
+        <i class="sprite sprite-destination-marker-icon inline-block-item"></i>
+      </li>
+      <li tabindex="0" aria-label="Favorite places" class="destination__view-item">
+        <i class="sprite sprite-star-icon inline-block-item"></i>
+      </li>
+    </ul>
+    <div class="destination__main-area clearfix">
+      <div class="destination__content">
+        <h2 class="destination__content-title">
+          My most favourite place in the world
+        </h2>
+        <div class="destination__content-reviews">
+          <strong>154</strong>
+          <span>Reviews</span>
+        </div>
+        <p class="destination__content-text">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas a pulvinar ipsum. Aliquam sit amet iaculis dolor. Vivamus sed diam sollicitudin. 
+        </p>
+        <a href="#" class="destination__content-read-more">Read more</a>
+      </div>
+      <div class="destination__photo">
+        <img src="./images/destination.jpg" alt="destination photo" class="destination__photo-img">
+        <div class="destination__details-wrapper clearfix">
+          <div class="pull-left destination__details">
+            <i tabindex="0" role="button" aria-labelledby="commentsCount" class="sprite sprite-comments-icon inline-block-item"></i>
+            <span class="inline-block-item" id="commentsCount">752 <span class="wcag-hidden">comments</span></span>
+          </div>
+          <div class="pull-right destination__details">
+            <i tabindex="0" role="button" aria-labelledby="likesCount" class="sprite sprite-likes-icon inline-block-item"></i>
+            <span class="inline-block-item" id="likesCount">2709 <span class="wcag-hidden">likes</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section aria-label="Graph Widget. For switching to next widget use 'D' button" class="graph">
+    <ul class="graph__scale">
+      <li class="graph__scale-item">40</li>
+      <li class="graph__scale-item">30</li>
+      <li class="graph__scale-item">20</li>
+      <li class="graph__scale-item">0</li>
+    </ul>
+    <ul class="graph__values">
+      <li data-value="17" class="inline-block-item graph__values-item">
+        <span tabindex="0" class="graph__values-diagram">
+          <span class="graph__values-tooltip">17</span>
+          <span class="wcag-hidden">Monday</span>
+        </span>
+        <span class="graph__values-day">Mon<span class="wcag-hidden">day</span></span>
+      </li>
+      <li data-value="19" class="inline-block-item graph__values-item">
+        <span tabindex="0" class="graph__values-diagram">
+          <span class="graph__values-tooltip">19</span>
+          <span class="wcag-hidden">Tuesday</span>
+        </span>
+        <span class="graph__values-day">Tues<span class="wcag-hidden">day</span></span>
+      </li>
+      <li data-value="27" class="inline-block-item graph__values-item">
+        <span tabindex="0" class="graph__values-diagram">
+          <span class="graph__values-tooltip">27</span>
+          <span class="wcag-hidden">Wednesday</span>
+        </span>
+        <span class="graph__values-day">Wed<span class="wcag-hidden">nesday</span></span>
+      </li>
+      <li data-value="32" class="inline-block-item graph__values-item">
+        <span tabindex="0" class="graph__values-diagram">
+          <span class="graph__values-tooltip">32</span>
+          <span class="wcag-hidden">Thursday</span>
+        </span>
+        <span class="graph__values-day">Thu<span class="wcag-hidden">rsday</span></span>
+      </li>
+      <li data-value="28" class="inline-block-item graph__values-item">
+        <span tabindex="0" class="graph__values-diagram">
+          <span class="graph__values-tooltip">28</span>
+          <span class="wcag-hidden">Friday</span>
+        </span>
+        <span class="graph__values-day">Fri<span class="wcag-hidden">day</span></span>
+      </li>
+      <li data-value="34" class="inline-block-item graph__values-item">
+        <span tabindex="0" class="graph__values-diagram">
+          <span class="graph__values-tooltip">34</span>
+          <span class="wcag-hidden">Saturday</span>
+        </span>
+        <span class="graph__values-day">Sat<span class="wcag-hidden">urday</span></span>
+      </li>
+      <li data-value="31" class="inline-block-item graph__values-item">
+        <span tabindex="0" class="graph__values-diagram">
+          <span class="graph__values-tooltip">31</span>
+          <span class="wcag-hidden">Sunday</span>
+        </span>
+        <span class="graph__values-day">Sun<span class="wcag-hidden">day</span></span>
+      </li>
+    </ul>
+  </section>
+  <section aria-label="Email Widget. This is the last widget" class="email">
+    <form action="#" class="email__form" aria-label="email form">
+      <div class="email__form-control">
+        <div class="email__customer">
+          <span aria-hidden="true">rick.james@mail.com</span>
+          <i role="button" aria-label="remove email" tabindex="0" class="email__customer-close sprite sprite-close-icon"></i>
+        </div>
+        <i role="button" aria-label="add email" tabindex="0" class="email__add-customer sprite sprite-email-add-icon"></i>
+      </div>
+      <div class="email__form-control">
+        <input type="text" class="email__text-input" placeholder="Subject">
+        <div class="email__file-upload">
+          <input type="file" id="file" name="file" class="email__file-input">
+          <label for="file" class="email__file-label">
+            <i role="button" aria-label="upload file" class="email__file-icon sprite sprite-file-add-icon"></i>
+          </label>
+        </div>
+      </div>
+      <div class="email__form-control">
+        <textarea name="message" aria-label="add message" id="message" cols="30" rows="12" class="email__text-input" placeholder="Message"></textarea>
+      </div>
+      <input class="pull-right email__submit" type="submit" value="send">
+    </form>
+  </section>
+</body>
+</html>
