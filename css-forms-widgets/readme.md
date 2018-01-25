@@ -1,1 +1,1 @@
-https://rolling-scopes-school.github.io/barysmaruhin-front-end-course/css-forms-widgets
+https://barysmarukhin.github.io/rs-school/css-forms-widgets
