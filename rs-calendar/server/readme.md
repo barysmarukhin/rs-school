@@ -8,8 +8,8 @@ How to use:
  3. Try 'npm start' and watch 7777 port
  4. Go to 'localhost://7777/administrator' and see what happens
 
-Look how it works by visiting this link http://rs-calendar-delfin.herokuapp.com
+Follow this link to watch how it works http://rs-calendar-delfin.herokuapp.com
 
-You may be Logged In using Register feature or using credentials below:
+You may be Logged In via registration or using credentials below:
   1.login: my68land@gmail.com, password: 123
   2.login: my68land@yandex.ru, password: 123
