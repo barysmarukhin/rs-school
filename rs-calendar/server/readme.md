@@ -11,5 +11,7 @@ How to use:
 Follow this link to watch how it works http://rs-calendar-delfin.herokuapp.com
 
 You may be Logged In via registration or using credentials below:
+
   1.login: my68land@gmail.com, password: 123
+  
   2.login: my68land@yandex.ru, password: 123
