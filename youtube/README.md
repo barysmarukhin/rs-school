@@ -6,4 +6,4 @@
 4.  use 'npm run dev' for development
 5.  use 'npm run prod' for production
 ### To watch live demo, please, follow the link below
- https://rolling-scopes-school.github.io/barysmaruhin-front-end-course/youtube/
+ https://barysmarukhin.github.io/rs-school/youtube
