@@ -9,3 +9,4 @@
 - Layout-and-scss: https://barysmarukhin.github.io/rs-school/layout-and-scss/
 - Frontend-nanodegree-mobile-portfolio_rs-school: https://barysmarukhin.github.io/rs-school/frontend-nanodegree-mobile-portfolio_rs-school
 - RS-Calendar: http://rs-calendar-delfin.herokuapp.com
+- PacMan Game: https://rolling-scopes-school.github.io/CrazyDolphinTeam-game-team/#/
